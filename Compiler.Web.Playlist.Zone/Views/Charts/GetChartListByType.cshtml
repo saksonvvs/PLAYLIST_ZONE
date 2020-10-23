@@ -1,0 +1,32 @@
+﻿@model List<Playlist.Zone.Dto.Music.Charts.AbstractChartDto>
+@{
+    ViewData["Title"] = "Charts";
+    Layout = null;
+}
+
+
+<ul style="list-style:none; margin:0px; padding:5px;">
+    @foreach (var item in Model)
+    {
+        <li><a onclick="LoadChart('@item.Uid')" style="cursor:pointer;">@item.Name</a></li>
+    }
+</ul>
+
+
+
+<script>
+
+    LoadChart = function (chart_uid) {
+        window.location = "/#charts/details/" + chart_uid;
+
+        PreloaderOn("#SearchResultsCh");
+
+        $.get("/charts/details/" + chart_uid, function (data) {
+            $("#SearchResultsCh").html(data);
+        });
+    }
+
+</script>
+
+
+

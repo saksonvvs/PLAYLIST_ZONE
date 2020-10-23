@@ -1,0 +1,60 @@
+@model Playlist.Zone.Dto.Music.Song.AbstractSongDto
+@{
+    ViewData["Title"] = "Chart";
+    Layout = null;
+
+    int song_id = 0;
+    string youtube_id = "";
+}
+
+
+
+
+<div class="plr-ch">
+
+
+
+    <div style="float:left; width:100%; height:10%;">
+        <div class="addLike">
+            Likes @Model.ViewsNum
+        </div>
+        <div class="viewsNum">
+            Views @Model.LikesNum
+        </div>
+    </div>
+
+
+    <div class="pls-controller" style="float:left; width:100%; height:90%; overflow:auto;">
+
+        <div class="plst-Itm" data-song="@Model.YouTubeId" data-id="@Model.Id" style="cursor:pointer; width:100%; height:33px; line-height:33px; border-bottom:1px dotted #dedede; overflow:hidden; ">
+            @Model.Artist - @Model.Duration
+        </div>
+
+        @if (youtube_id == "")
+        {
+            song_id = Model.Id;
+            youtube_id = Model.YouTubeId;
+        }
+    </div>
+
+</div>
+
+
+
+
+<script>
+    $(document).ready(function () {
+        $('.player-ttl').text('@Model.Artist');
+        playSong('@song_id', '@youtube_id');
+    })
+</script>
+
+
+
+
+
+
+
+@section Scripts
+{
+}

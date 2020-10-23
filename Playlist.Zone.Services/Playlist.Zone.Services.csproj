@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.35" />
+    <PackageReference Include="Google.Apis.YouTube.v3" Version="1.41.1.1699" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.12" />
+    <PackageReference Include="MySql.Data" Version="8.0.21" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Playlist.Zone.Datatier\Playlist.Zone.Datatier.csproj" />
+    <ProjectReference Include="..\Playlist.Zone.Dto\Playlist.Zone.Dto.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Compiler.Abstractions.Dto">
+      <HintPath>..\..\..\ROOT\cmpServices\_Shared\Compiler.Abstractions.Dto\bin\Release\netstandard2.0\Compiler.Abstractions.Dto.dll</HintPath>
+    </Reference>
+    <Reference Include="Compiler.Common">
+      <HintPath>..\..\..\ROOT\cmpServices\_Shared\Compiler.Interfaces.Common\bin\Release\netstandard2.0\Compiler.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Compiler.Interfaces.Common">
+      <HintPath>..\..\..\ROOT\cmpServices\_Shared\Compiler.Interfaces.Common\bin\Release\netstandard2.0\Compiler.Interfaces.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Compiler.Utility">
+      <HintPath>..\..\..\ROOT\cmpServices\_Shared\Compiler.Utility\bin\Release\netstandard2.0\Compiler.Utility.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

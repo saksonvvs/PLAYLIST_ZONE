@@ -1,0 +1,57 @@
+@model Playlist.Zone.Dto.Music.Playlist.AbstractPlaylistDto
+@{
+    Layout = null;
+}
+
+
+<div id="EditPlaylistDlgBox">
+    <div class="hdr">
+        <div class="l-cont">Rename Playlist</div>
+        <div class="r-cont" onclick="LightBoxOff();">X</div>
+    </div>
+
+    <div style="float:left; width:100%; margin:10px 0 0 0;">
+        <span>Playlist Name</span>
+        <input id="EditPlstNameTxt" type="text" value="@Model.Name" />
+    </div>
+
+    <div style="float:left; width:100%; margin:10px 0 0 0;">
+        <input type="button" id="EditPlstCancelBtn" value="Cancel" />
+        <input type="button" id="EditPlstCompBtn" value="Edit Playlist" />
+    </div>
+
+</div>
+
+
+
+
+
+
+
+<script>
+    $(document).ready(function () {
+
+        $("#EditPlaylistDlgBox").css("left", ($("#AddNewPlaylistBtn").offset().left+15) + "px");
+        $("#EditPlaylistDlgBox").css("top", ($("#AddNewPlaylistBtn").offset().top+15) + "px");
+
+
+        $("#EditPlstCompBtn").click(function () {
+
+            var plst_name = "";
+            plst_name = $("#EditPlstNameTxt").val();
+
+            $.post("/Data/Playlists/Rename", { Id: @Model.Id, playlistName: plst_name }).done( function(data) {
+                LightBoxOff();
+                LoadMyPlaylists();
+            });
+
+        });
+
+
+        $("#EditPlstCancelBtn").click(function () {
+            LightBoxOff();
+        });
+
+    });
+
+</script>

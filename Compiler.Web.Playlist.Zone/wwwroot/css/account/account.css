@@ -1,0 +1,85 @@
+﻿
+
+.login-box {
+    float: left;
+    width: 30%;
+    min-height: 140px;
+    margin: 10% 0 10px 30%;
+    padding: 20px 20px 20px 20px;
+    background-color: #f1f1f1;
+    border-radius: 3px;
+    -webkit-box-shadow: 1px -1px 9px 0px rgba(0,0,0,0.4);
+    -moz-box-shadow: 1px -1px 9px 0px rgba(0,0,0,0.4);
+    box-shadow: 1px -1px 9px 0px rgba(0,0,0,0.4);
+}
+
+
+
+@media screen and (max-width: 900px) {
+    .login-box {
+        float: left;
+        width: 60%;
+        min-height: 140px;
+        margin: 10% 0 10px 20%;
+        padding: 20px 20px 20px 20px;
+        background-color: #f1f1f1;
+        border-radius: 3px;
+    }
+}
+
+
+
+@media screen and (max-width: 500px)
+{
+    .login-box {
+        float: left;
+        width: 80%;
+        min-height: 140px;
+        margin: 10% 0 10px 10%;
+        padding: 20px 20px 20px 20px;
+        background-color: #f1f1f1;
+        border-radius: 3px;
+    }
+}
+
+
+
+.register-box {
+    float: left;
+    width: 60%;
+    min-height: 350px;
+    background-color: #eaeaea;
+    margin: 10% 0 0 20%;
+    padding: 20px 20px 30px 20px;
+    border-radius: 3px;
+    -webkit-box-shadow: 1px -1px 9px 0px rgba(0,0,0,0.4);
+    -moz-box-shadow: 1px -1px 9px 0px rgba(0,0,0,0.4);
+    box-shadow: 1px -1px 9px 0px rgba(0,0,0,0.4);
+}
+
+
+
+
+
+@media only screen (max-width:600px) {
+    .login-box {
+        float: left;
+        width: 90%;
+        min-height: 140px;
+        margin: 10% 0 10px 5%;
+        padding: 20px 20px 20px 20px;
+        background-color: #ededed;
+        border-radius: 3px;
+    }
+
+
+    .register-box {
+        float: left;
+        width: 90%;
+        min-height: 140px;
+        margin: 10% 0 10px 5%;
+        padding: 20px 20px 20px 20px;
+        background-color: #ededed;
+        border-radius: 3px;
+    }
+}

@@ -1,0 +1,154 @@
+﻿@{
+    ViewData["Title"] = "Playlists";
+    Layout = null;
+}
+
+
+<div class="row row-item" style="margin:0 0 0 0;">
+    
+
+    <div class="col-md-3" style="padding:6px 3px 6px 6px;">
+        <div class="myPlstsBtn"> My Playlists</div>
+        <div class="popularPlstsBtn"> Popular Playlists</div>
+        <div class="mostViewedPlstsBtn"> Most Viewed Playlists</div>
+    </div>
+
+
+
+    <div class="col-md-4" style="padding:6px 6px 6px 3px;">
+        <div id="PlaylistCH"></div>
+    </div>
+    
+
+
+    <div class="col-md-5" style="padding:6px 6px 6px 3px;">
+        
+        <div class="songCH">
+            <div class="sng-Header">Songs</div>
+            <div id="SongsCH1"></div>
+        </div>
+
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+<script>
+
+    var current_plst_id = 0;
+
+
+    $(window).resize(function () {
+        $("#SongsCH1").css("height", ($(window).height() - 140) + "px");
+    });
+
+
+    $(document).ready(function () {
+        
+        $("#SongsCH1").css("height", ($(window).height() - 140) + "px");
+        $("#SongsCH1").css("overflow", "auto");
+        
+
+        @if(User.Identity.IsAuthenticated)
+        {
+            <text>LoadMyPlaylists();</text>
+        }
+        else
+        {
+            <text>LoadPopularPlaylists();</text>
+        }
+        
+
+        $("#SongsCH1").on("mouseover", function () {
+            $("#SongsCH1").css("overflow", "auto");
+        });
+
+        $("#SongsCH1").on("mouseout", function () {
+            $("#SongsCH1").css("overflow", "hidden");
+        });
+        
+
+        $(".myPlstsBtn").on("click", function () {
+            LoadMyPlaylists();
+        });
+
+
+        $(".popularPlstsBtn").on("click", function () {
+            LoadPopularPlaylists();
+        });
+
+
+        $(".mostViewedPlstsBtn").on("click", function () {
+            LoadMostViewedPlaylists();
+        });
+
+    });
+
+
+
+    //----------------------------------------------------------------------------------------
+    function LoadMyPlaylists() {
+        PreloaderOn("#PlaylistCH");
+
+        $.get("/Playlists/ManagePlaylists", function (data) {
+            $("#PlaylistCH").html(data);
+
+        }).fail(function () { 
+            NotAuthorized();
+        });
+    }
+    //----------------------------------------------------------------------------------------
+
+
+
+    // load songs
+    //----------------------------------------------------------------------------------------
+    function LoadPlaylistDetails(plst_id) {
+
+        current_plst_id = plst_id;
+        
+        PreloaderOn("#SongsCH1");
+        $.get("/Playlists/ManagePlaylistSongs/" + plst_id, function (playlistData) {
+            
+            $("#SongsCH1").html("");
+            $("#SongsCH1").html(playlistData);
+            
+        });
+    }
+    //----------------------------------------------------------------------------------------
+
+
+    function LoadPopularPlaylists() {
+        PreloaderOn("#PlaylistCH");
+        $.get("/Playlists/PopularPlaylists", function (data) {
+            $("#SongsCH1").html("");
+            $("#PlaylistCH").html(data);
+        });
+    }
+
+
+    function LoadMostViewedPlaylists() {
+        PreloaderOn("#PlaylistCH");
+        $.get("/Playlists/MostViewed", function (data) {
+            $("#SongsCH1").html("");
+            $("#PlaylistCH").html(data);
+        });
+    }
+    
+</script>
+
+
+
+
+
+
+
+
+@section scripts{
+}

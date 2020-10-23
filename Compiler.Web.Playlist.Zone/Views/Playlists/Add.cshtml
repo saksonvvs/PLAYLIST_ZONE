@@ -1,0 +1,56 @@
+
+@{
+    Layout = null;
+}
+
+
+<div id="AddNewPlaylistDlgBox">
+
+    <div class="add-new-header">
+        <div class="lfc">Add New Playlist</div>
+        <div class="rfc" onclick="LightBoxOff();">X</div>
+    </div>
+
+    <div style="float:left; width:100%; margin:10px 0 0 0;">
+        <span>Playlist Name</span>
+        <input id="AddNewPlstNameTxt" type="text" value="" />
+    </div>
+
+    <div style="float:left; width:100%; margin:10px 0 0 0;">
+        <input type="button" id="AddPlstCancelBtn" value="Cancel"  />
+        <input type="button" id="AddPlstCompBtn" value="Add New Playlist" />
+    </div>
+
+</div>
+
+
+
+
+
+<script>
+    $(document).ready(function () {
+        
+        $("#AddNewPlaylistDlgBox").css("left", ($("#AddNewPlaylistBtn").offset().left+15) + "px");
+        $("#AddNewPlaylistDlgBox").css("top", ($("#AddNewPlaylistBtn").offset().top+15) + "px");
+
+
+        $("#AddPlstCompBtn").click(function () {
+
+            var plst_name = "";
+            plst_name = $("#AddNewPlstNameTxt").val();
+
+            
+            $.post("/Data/Playlists/Add/" + plst_name, function (data) {
+                LightBoxOff();
+                LoadMyPlaylists();
+            });
+
+        });
+
+
+        $("#AddPlstCancelBtn").click(function () {
+            LightBoxOff();
+        });
+
+    });
+</script>

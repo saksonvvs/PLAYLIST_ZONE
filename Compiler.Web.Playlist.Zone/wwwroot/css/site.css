@@ -1,0 +1,296 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    font-family: 'Roboto', sans-serif;
+    overflow-y:visible;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set widths on the form inputs since otherwise they're 100% wide */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+
+
+ul
+{
+    list-style:none;
+    padding-left:0px;
+}
+
+ul li
+{
+    margin-top:7px;
+}
+
+
+.navbar-header
+{
+    font-weight:bold;
+    margin-top:6px;
+}
+
+
+a:hover {
+    color: #090979;
+}
+
+
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
+
+
+
+
+
+@media screen and (min-width: 1501px) {
+    .main-content {
+        padding: 0 3% 0 3%;
+    }
+
+    .navbar {
+        padding: 0 3% 0 3%;
+    }
+}
+
+
+
+@media screen and (max-width: 1500px) {
+    .main-content {
+        padding: 0 0 0 0;
+    }
+
+    .navbar {
+        padding: 0 0 0 0;
+    }
+}
+
+
+
+
+.main-back {
+    background: rgb(9,93,121);
+    background: linear-gradient(180deg, rgba(9,93,121,1) 14%, rgba(4,70,92,1) 100%);
+}
+
+.sec-back {
+    background: rgb(9,93,121);
+    background: linear-gradient(180deg, rgba(9,93,121,1) 14%, rgba(4,70,92,1) 100%);
+}
+
+.grey-back {
+    background: rgb(9,93,121);
+    background: linear-gradient(180deg, rgba(120,120,120,1) 14%, rgba(80,80,80,1) 100%);
+}
+
+
+
+.navbar-inverse {
+    background: rgb(9,93,121);
+    background: linear-gradient(180deg, rgba(9,93,121,1) 14%, rgba(4,70,92,1) 100%);
+    color: #FFFFFF;
+}
+
+
+.navbar-inverse .navbar-brand
+{
+    color:#efefef;
+}
+
+.navbar-inverse .navbar-nav > li > a
+{
+    color:#efefef;
+}
+
+
+.row-item
+{
+    margin:0px;
+    padding:0px;
+}
+
+
+input, select, textarea
+{
+    max-width:100%;
+}
+
+
+
+.container {
+    width: 100%;
+    margin: 0px;
+}
+
+.body-content {
+    padding: 0px;
+    margin: 0px;
+}
+
+.row {
+    padding: 0px;
+}
+
+
+
+
+@media screen and (max-width: 1500px){
+
+    .container {
+        width: 100%;
+        margin:0px;
+    }
+
+    .body-content {
+        padding: 0px;
+        margin:0px;
+    }
+
+    .row
+    {
+        padding:0px;
+    }
+
+}
+
+
+
+
+/*--------- _playlists_ ----------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+.myPlstsBtn {
+    float: left;
+    width: 100%;
+    height: 74px;
+    line-height: 35px;
+    padding: 10px;
+    text-align: left;
+    cursor: pointer;
+    color:#333333;
+    background-color:#efefef;
+    font-size:19px;
+    margin:3px 0 0 0;
+}
+
+.popularPlstsBtn {
+    float: left;
+    width: 100%;
+    height: 74px;
+    line-height: 35px;
+    padding: 10px;
+    text-align: left;
+    cursor: pointer;
+    color: #333333;
+    background-color: #efefef;
+    font-size: 19px;
+    margin: 3px 0 0 0;
+}
+
+
+.mostViewedPlstsBtn {
+    float: left;
+    width: 100%;
+    height: 74px;
+    line-height: 35px;
+    padding: 10px;
+    text-align: left;
+    cursor: pointer;
+    color: #333333;
+    background-color: #efefef;
+    font-size: 19px;
+    margin: 3px 0 0 0;
+}
+
+
+
+
+
+
+#LightBoxBackCH1 {
+    position:absolute; 
+    top:-100px; 
+    left:-100px; 
+    background-color:#232323; 
+    opacity:0.4;
+    z-index:1000000;
+}
+
+#LightBoxCH1 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1000001;
+}
+
+
+
+
+
+
+
+/* Playlist Song */
+
+.ssSongItm
+{
+    float:left; 
+    width:100%;
+    padding:5px;
+    cursor:pointer;
+    border-bottom:1px dotted #565656;
+}
+
+.ssSongItm img {
+    float: left;
+    width:15%;
+    margin-top:7px;
+}
+
+.ssSongItm div {
+    float: left;
+    width:85%;
+    height:50px;
+    line-height:50px;
+    overflow:hidden;
+}
+
+/* Playlist Song */
+
+
+

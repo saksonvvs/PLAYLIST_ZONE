@@ -1,0 +1,382 @@
+﻿
+/* INDEX */
+
+#PlaylistCH {
+    float:left; width:100%;
+}
+
+#SongsCH1 {
+    float:left; width:100%; height:100%;
+}
+
+
+.sng-Header {
+    float:left; width:100%; height:30px; line-height:30px; background-color:#dedede; font-weight:bold;
+}
+
+.songCH {
+    float:left; width:100%; height:100%; line-height:30px;
+}
+
+/* INDEX */
+
+
+
+/* ADD NEW */
+
+#AddNewPlaylistDlgBox
+{
+}
+
+#AddNewPlaylistDlgBox .add-new-header
+{
+    float:left;
+    width:100%; 
+    height:23px; 
+    line-height:23px; 
+    background-color:#dedede;
+}
+
+
+#AddNewPlaylistDlgBox .lfc {
+    float: left;
+    font-weight: 600;
+}
+
+#AddNewPlaylistDlgBox .rfc {
+    float:right; font-weight:600; cursor:pointer; margin-right:5px;
+}
+
+
+#AddNewPlstNameTxt {
+    float:left; 
+    width:100%;
+}
+
+
+#AddPlstCancelBtn {
+    float:right;
+}
+
+#AddPlstCompBtn {
+    float:right; 
+    margin-right:10px;
+}
+
+
+/* ADD NEW */
+
+
+
+
+/* MANAGE PLAYLISTS */
+
+.plst-DelPlst {
+    float: right;
+    height: 20px;
+    line-height: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    background-color: #d87171;
+    color: #FFFFFF;
+    border-radius: 3px;
+    margin: 5px 0 0 0;
+    padding: 0px 3px 0 3px;
+}
+
+
+.plst-EditPlst {
+    float: right;
+    height: 20px;
+    line-height: 20px;
+    cursor: pointer;
+    font-size: 12px;
+    background-color: #3077be;
+    color: #FFFFFF;
+    border-radius: 3px;
+    margin: 5px 5px 0 0;
+    padding: 0px 5px 0 5px;
+}
+
+
+
+
+.plst-Item {
+    float: left;
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    border-bottom: 1px dotted #dedede;
+    padding: 5px;
+    cursor: pointer;
+}
+
+
+.plst-SongItem {
+    height:33px; 
+    line-height:33px; 
+    overflow:hidden;
+    float: left;
+    width: 100%;
+    border-bottom: 1px dotted #dedede;
+    padding: 1px 0 0 1px;
+    cursor: pointer;
+}
+
+
+.isDef-True {
+    background-color: #fcf088;
+}
+
+
+
+.AddNewPlaylistBtn {
+    float:left; width:100%; height:30px; line-height:30px; background-color:#01af57; color:#FFFFFF; cursor:pointer;
+}
+
+.ttlPlaylists {
+    float:left; width:100%; height:30px; line-height:30px; background-color:#dedede; font-weight:bold;
+}
+
+.plst-ImgSong {
+    float: left;
+    width: 15%;
+    overflow:hidden;
+}
+
+.plst-PlaySong {
+    float: left;
+    width: 75%;
+}
+
+.plst-DelSong {
+    float:right; height:20px; line-height:20px; cursor:pointer; font-size:14px; background-color:#d87171; color:#FFFFFF; border-radius:3px; 
+    padding:0px 3px 0 3px;
+    margin:5px 4px 0 0;
+}
+
+.plst-ImgSong img {
+    float:left; 
+    height:28px; 
+    margin:1px 0 0 3px;
+}
+
+/* MANAGE PLAYLISTS */
+
+
+
+
+
+
+
+
+
+/* MANAGE PLAYLIST SONGS */
+
+
+#AddNewSongDlgBox {
+    position: absolute;
+    top: 200px;
+    left: 200px;
+    width: 400px;
+    min-height: 130px;
+    padding: 5px;
+    background-color: #f3f3f3;
+    border: 1px dotted #232323;
+}
+
+#AddNewSongBtn {
+    float: left;
+    width: 33%;
+    height: 30px;
+    line-height: 30px;
+    background-color: #01af57;
+    color: #FFFFFF;
+    cursor: pointer;
+    padding-left: 7px;  
+}
+
+#PlayPlaylistBtn {
+    float:left;
+    width: 33%;
+    height: 30px;
+    line-height: 30px;
+    background-color:#3077be;
+    color: #FFFFFF;
+    cursor: pointer;
+    padding-left:7px;
+}
+
+
+#MakeDefaultBtn {
+    float: left;
+    width: 34%;
+    height: 30px;
+    line-height: 30px;
+    background-color: #898989;
+    color: #FFFFFF;
+    cursor: pointer;
+    padding-left: 7px;
+}
+
+
+/* MANAGE PLAYLIST SONGS */
+
+
+
+/* TAGS */
+
+.tags-ch {
+    float:left; 
+    width:100%;
+}
+
+.add-tag-mch {
+    display:none; 
+    float:left; 
+    margin:3px 0 0 0; 
+    padding:5px 10px; 
+    background-color:#b5b5b5; 
+    border:1px dotted #999999;
+}
+
+
+#newTagVal {
+    float:left; height:24px; line-height:24px;
+}
+
+#newTagActbtn {
+    float:left; height:24px; line-height:22px;
+}
+
+
+
+
+.plst-TagItem {
+    float: left;
+    height: 24px;
+    line-height: 24px;
+    padding: 0 5px;
+    margin-right: 3px;
+    border-radius: 3px;
+    background-color: #057ebc;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+
+.add-tag-btn {
+    float:left; 
+    height:24px; 
+    line-height:24px; 
+    padding:0 5px; 
+    margin-right:3px; 
+    border-radius:3px; 
+    background-color:#808080; 
+    color:#ffffff; 
+    cursor:pointer;
+}
+
+/* TAGS*/
+
+
+
+
+
+
+
+#AddNewPlaylistDlgBox {
+    position: absolute;
+    top: 200px;
+    left: 200px;
+    width: 350px;
+    min-height: 130px;
+    padding: 5px;
+    background-color: #f3f3f3;
+    border: 1px dotted #232323;
+}
+
+
+#AddNewPlaylistBtn {
+    float: left;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    background-color: #01af57;
+    color: #FFFFFF;
+    cursor: pointer;
+    padding-left:7px;
+}
+
+
+
+
+
+#EditPlaylistDlgBox {
+    position: absolute;
+    top: 200px;
+    left: 200px;
+    width: 350px;
+    min-height: 130px;
+    padding: 5px;
+    background-color: #f3f3f3;
+    border: 1px dotted #232323;
+}
+
+
+#EditPlaylistBtn {
+    float: left;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    background-color: #01af57;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+
+
+#EditPlstNameTxt {
+    float:left; width:100%;
+}
+
+#EditPlstCancelBtn {
+    float:right;
+}
+
+#EditPlstCompBtn {
+    float:right; margin-right:10px;
+}
+
+
+
+.hdr {
+    float:left; width:100%; height:23px; line-height:23px; background-color:#dedede;
+}
+
+.l-cont {
+    float:left; font-weight:600;
+}
+
+.r-cont {
+    float:right; font-weight:600; cursor:pointer; margin-right:5px;
+}
+
+
+
+.plstSelected
+{
+    background-color:#FCF088;
+}
+
+
+
+
+/* ------------------- */
+
+.plst-det-header {
+    background-color:#fcf088; width:100%; height:32px; line-height:32px; font-size:16px; font-weight:500;
+}
+
+
+/* ------------------- */

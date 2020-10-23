@@ -1,0 +1,66 @@
+﻿@using System.Collections.Generic
+@using System.Linq
+@using Microsoft.AspNetCore.Http
+@model Playlist.Zone.Administration.Models.AccountViewModels.LoginViewModel
+
+@{
+    ViewData["Title"] = "Log in";
+    Layout = "/Views/Shared/_LayoutLogin.cshtml";
+}
+
+
+
+<div class="row">
+
+    <div class="col-md-4"></div>
+
+    <div class="col-md-4">
+        
+        <div style="margin:20px 0 0 0; background-color:#38784f; border:#316343 1px solid; color:#FFFFFF; padding:10px;">
+            <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+                
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Email" style="font:300 14px/22px 'Roboto',sans-serif;"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger" style="color:#FCF088;"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" style="font:300 14px/22px 'Roboto',sans-serif;"></label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger" style="color:#FCF088;"></span>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label asp-for="RememberMe">
+                            <input asp-for="RememberMe" />
+                            @Html.DisplayNameFor(m => m.RememberMe)
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default">Log in</button>
+                </div>
+                <div class="form-group">
+                    
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+
+
+
+    <div class="col-md-4 col-md-offset-2">
+        <section>
+            
+        </section>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

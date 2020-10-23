@@ -1,0 +1,72 @@
+@model List< Playlist.Zone.Dto.Music.Playlist.AbstractPlaylistDto>
+@{
+    Layout = null;
+}
+
+
+<div id="AddNewSongDlgBox">
+    <div style="float:left; width:100%; height:23px; line-height:23px; background-color:#dedede;">
+        
+        <div style="float:left; font-weight:600;">Add New Song</div>
+        <div style="float:right; font-weight:600; cursor:pointer; margin-right:5px;" onclick="LightBoxOff();">X</div>
+    </div>
+
+
+    <div style="float:left; width:100%; margin:10px 0 0 0;">
+        <select id="playlist_id" name="playlist_id" style="float:left; width:100%;">
+            @foreach (var item in Model)
+            {
+                if (item.IsDefault)
+                {
+                    <option value="@item.Id" selected="selected">@item.Name</option>
+                }
+                else
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            }
+        </select>
+
+    </div>
+
+
+    <div style="float:left; width:100%; margin:10px 0 0 0;">
+        <input type="button" id="AddSongSubmitBtn" value="Submit" style="float:right; margin-right:10px;" />
+    </div>
+
+</div>
+
+
+
+
+<script>
+    $(document).ready(function () {
+
+        ControlPosition();
+        
+        $("#AddSongSubmitBtn").off();
+        $("#AddSongSubmitBtn").on("click", function () {
+            
+            $.post("/Data/Playlists/AddSong/" + $("#playlist_id").val() + "/@ViewBag.SongGuid", function (data) {
+
+                $(".addSongBtn[data-attr-id='@ViewBag.SongGuid']").css("background-color", "#CC0000");
+                $(".addSongBtn[data-attr-id='@ViewBag.SongGuid']").text("Added");
+
+                LightBoxOff();
+            });
+        });
+
+
+        $("#AddSongCancelBtn").off();
+        $("#AddSongCancelBtn").on("click", function () {
+            LightBoxOff();
+        });
+
+
+        function ControlPosition() {
+            $("#AddNewSongDlgBox").css("left", ($(window).width() / 2 - 200) + "px");
+            $("#AddNewSongDlgBox").css("top", ($(window).height() / 2 - 100) + "px");
+        }
+    });
+    
+</script>

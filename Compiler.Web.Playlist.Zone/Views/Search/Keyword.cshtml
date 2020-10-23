@@ -1,0 +1,140 @@
+﻿@model Playlist.Zone.Dto.Music.SearchResult.AbstractSearchResultDto
+@{
+    Layout = null;
+}
+
+<div style="float:left; width:100%; margin-top:20px;">
+
+
+    <div class="tags-list">
+        <div class="ttl-tags">Tags:</div>
+        <div class="cnt-side-tags">
+            @foreach (var item in Model.TagsList)
+            {
+                <div class="tag-m-itm" data-attr-id="@item.Id" data-attr-name="@item.Name">
+                    @item.Name
+                </div>
+            }
+        </div>
+    </div>
+
+
+
+    <div class="search-res-list">
+        <div class="ttl-srch-results" >Search Results For: @Model.SearchTerm</div>
+
+        @foreach (var item in Model.SongsList)
+        {
+            <div class="ssr-cont">
+                <div class="l-cont">
+
+                    <div class="img-holder" style="background-color:blueviolet; background:url(//i.ytimg.com/vi/@item.YouTubeId/mqdefault.jpg) no-repeat; background-size:cover; background-position:center;">
+                    </div>
+                    
+                    <div class="cnt-holder" style="background-color:#efefef;">
+                        <div class="songName">@item.Artist</div>
+                        <div class="songDetails">
+                            <span style="margin-right:10px;">Views: @item.ViewsNum</span>
+                            <span style="margin-right:10px;">Likes: @item.LikesNum</span>
+                            <span style="margin-right:10px;">Duration: @item.Duration</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="r-cont">
+                    <div class="addSongBtn" data-attr-id="@item.YouTubeId">Add to playlist</div>
+                    <div class="playSongBtn" data-attr-id="@item.YouTubeId">Play</div>
+                </div>
+            </div>
+        }
+
+        <input id="nextPageBtn" type="button" value="Next" class="main-back" />
+    </div>
+
+
+    <div style="float:left; width:100%; height:30px; "></div>
+
+</div>
+
+
+@if (Model.SongsList.Count == 0)
+{
+    <div>No Results</div>
+}
+
+
+
+
+
+<script>
+
+    $(document).ready(function () {
+
+        var numItems = $(".search-res-list").children().length - 2;
+
+        var cellHeight = 80; 
+
+        if (numItems >= 8) cellHeight = ($("#SearchResultsCh").height() - 150) / (numItems);
+        if (cellHeight < 60) cellHeight = 60;
+
+
+        $(".ssr-cont").css("height", cellHeight + "px");
+
+        $(".addSongBtn").off();
+        $(".addSongBtn").on("click", function () {
+
+            var current_song_id = $(this).attr("data-attr-id");
+
+            LightBoxOn();
+
+            $.get("/Playlists/AddSongToPlaylist/" + current_song_id, function (data) {
+                LightBoxContent(data);
+            })
+                .done(function () {
+                })
+                .fail(function () {
+                    NotAuthorized();
+                })
+                .always(function () {
+                });
+
+        });
+
+
+        $(".playSongBtn").off();
+        $(".playSongBtn").on("click", function () {
+
+            OpenPlayer();
+
+            $.get("/Player/Song/" + $(this).attr("data-attr-id"), function (data) {
+                $(".player-content").html(data);
+            });
+        });
+
+
+        $("#nextPageBtn").off();
+        $("#nextPageBtn").on("click", function(){
+
+            PreloaderOn("#SearchResultsCh");
+
+            var keyVal = $("#SearchBarTxt").val();
+
+            $.get("/Search/Keyword/@Model.NextPageToken/" + keyVal, function (data) {
+                $("#SearchResultsCh").html(data);
+            });
+        });
+
+
+
+        $(".tag-m-itm").on("click", function () {
+
+            PreloaderOn(".sub-content");
+
+            $.get("/Search/Keyword/" + $(this).attr("data-attr-name"), function (data) {
+                $("#SearchResultsCh").html(data);
+            });
+        });
+
+
+    });
+
+</script>

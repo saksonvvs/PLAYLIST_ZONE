@@ -1,0 +1,147 @@
+﻿@model Playlist.Zone.Dto.Music.Charts.AbstractChartDto
+@{
+    ViewData["Title"] = "Charts";
+    Layout = null;
+}
+
+
+
+
+<div class="row row-item" style="margin:0 0 0 0;">
+
+    <div class="col-md-2 chart-left-cmp" style="margin:30px 0 0 0; padding:0px;">
+        <h3 class="sd-chart-btn" data-chart-id="@((int)Compiler.Common.Music.ChartType.Shazam)" style="cursor:pointer; background-color:#f3f3f3; padding:8px;">@Compiler.Common.Music.ChartType.Shazam.ToString()</h3>
+        <div id="sd-chart-btn-@((int)Compiler.Common.Music.ChartType.Shazam)">
+        </div>
+        <h3 class="sd-chart-btn" data-chart-id="@((int)Compiler.Common.Music.ChartType.Billboard)" style="cursor:pointer; background-color:#f3f3f3; padding:8px;">@Compiler.Common.Music.ChartType.Billboard.ToString()</h3>
+        <div id="sd-chart-btn-@((int)Compiler.Common.Music.ChartType.Billboard)">
+        </div>
+        <h3 class="sd-chart-btn" data-chart-id="@((int)Compiler.Common.Music.ChartType.iTunes)" style="cursor:pointer; background-color:#f3f3f3; padding:8px;">@Compiler.Common.Music.ChartType.iTunes.ToString()</h3>
+        <div id="sd-chart-btn-@((int)Compiler.Common.Music.ChartType.iTunes)">
+        </div>
+        <h3 class="sd-chart-btn" data-chart-id="@((int)Compiler.Common.Music.ChartType.YouTube)" style="cursor:pointer; background-color:#f3f3f3; padding:8px;">@Compiler.Common.Music.ChartType.YouTube.ToString()</h3>
+        <div id="sd-chart-btn-@((int)Compiler.Common.Music.ChartType.YouTube)">
+        </div>
+    </div>
+
+
+    <div class="col-md-6" style="margin:0%;">
+
+        <div style="float:left; width:98%; height:100%;">
+
+            <div class="chrt-Name" data-plst-guid="@Model.Uid" style="float:left; width:100%; cursor:pointer; margin:10px 0 10px 0; background-color:#ffffff;">
+                
+                <div style="float:left; margin:2px 0 0 2px; background-color:#0779b7; color:#FFFFFF; padding:3px 15px 3px 15px; border-radius:5px;">
+                    Play
+                </div>
+                <div style="float:left; font-size:21px; margin:0 0 0 10px;">Chart - @Model.Name</div>
+            </div>
+
+            <div style="float:left; width:100%;">
+
+                @foreach(var item in Model.SongsList)
+                {
+                <div class="chrt-SongItem" data-song-guid="@item.YouTubeId" style="float:left; width:100%; height:35px; line-height:35px; padding:2px; margin-bottom:3px; cursor:pointer; overflow:hidden; background-color:#efefef;">
+                    <img alt="" src="//i.ytimg.com/vi/@item.YouTubeId/mqdefault.jpg" style="float:left; height:33px; margin-right:10px;">
+                    <span>
+                        @item.Artist - @item.Name
+                    </span>
+                </div>
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="col-md-4 chart-right-cmp" style="margin:0%;">
+
+        <div style="float:left; width:100%; margin:10px 0 0 0;">
+            <div style="float:left; font-size:21px; margin:0 0 0 10px;">&nbsp;</div>
+        </div>
+
+        <div style="float:left; width:100%; height:200px; margin:10px 0 0 0; padding:10px; background-color:#f3f3f3; ">
+
+            <div class="chrt-Name" data-plst-guid="@Model.Uid" style="float:left; width:100%; cursor:pointer; margin:10px 0 10px 0;">
+
+                <div style="float:left; margin:2px 0 0 2px; background-color:#0779b7; color:#FFFFFF; padding:3px 15px 3px 15px; border-radius:5px;">
+                    Play
+                </div>
+                <div style="float:left; font-size:21px; margin:0 0 0 10px;">Chart - @Model.Name</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+<script>
+
+    $(document).ready(function () {
+
+        $(".chrt-SongItem").on("mouseover", function () {
+            $(this).css("background-color", "#dedede");
+        });
+
+        $(".chrt-SongItem").on("mouseout", function () {
+            $(this).css("background-color", "#efefef");
+        });
+
+        $(".chrt-SongItem").on("click", function () {
+            PlayerNavigatePlaySong($(this).attr("data-song-guid"));
+        });
+
+
+        $(".chrt-Name").on("click", function () {
+            PlayChart($(this).attr("data-plst-guid"));
+        });
+
+
+        //need to finish !!!!
+        $(".sd-chart-btn").on("click", function () {
+
+            var typeId = $(this).attr("data-chart-id")
+
+            
+            $("#sd-chart-btn-" + typeId).html("loading...");
+
+
+            $.get('/charts/list/type/' + typeId, function (data) {
+                $("#sd-chart-btn-" + typeId ).html(data);
+            });
+
+        });
+
+
+        $('div#SearchResultsCh').scroll(function () {
+            if ($(window).width() > 1000) {
+                $(".chart-left-cmp").css("padding-top", $(this).scrollTop() + "px");
+                $(".chart-right-cmp").css("padding-top", ($(this).scrollTop() - 20) + "px");
+            } else {
+                $(".chart-left-cmp").css("padding-top", "0px");
+                $(".chart-right-cmp").css("padding-top", "0px");
+            }
+
+        });
+
+       
+
+
+    });
+
+
+    PlayChart = function (chart_uid) {
+
+        OpenPlayer();
+        $.get("/player/chart/" + chart_uid, function (data) {
+            $(".player-content").html(data);
+        });
+    }
+
+</script>

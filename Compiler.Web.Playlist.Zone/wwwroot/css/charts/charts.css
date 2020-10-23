@@ -1,0 +1,52 @@
+﻿
+a:hover {
+    /*color:#FFFFFF;*/
+    text-decoration: none;
+}
+
+
+.chrt-hm-item {
+    width:100%;
+    float: left;
+    margin: 5px 0 0 0;
+    background-color: #ffffff;
+    color: #222222;
+    cursor: pointer;
+    border-radius: 3px;
+    padding: 5px 20px 5px 0px;
+}
+
+
+.plst-hm-item {
+    margin: 5px 0 0 0;
+    background-color: #ffffff;
+    color: #222222;
+    cursor: pointer;
+    border-radius: 3px;
+    padding: 5px 20px 5px 20px;
+}
+
+
+
+.crt-det-1
+{
+    float:left;
+    width:100%;
+}
+
+
+@media screen and (max-width: 990px) {
+    .crt-det-1 {
+        /*display:none;*/
+    }
+}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,168 @@
+﻿@model Playlist.Zone.Dto.Music.Playlist.AbstractPlaylistDto
+@{
+    Layout = null;
+}
+
+
+    <div style="float:left; width:100%;">
+
+
+        <div style="background-color:#fcf088; width:100%; height:32px; line-height:32px; font-size:16px; font-weight:500;">&nbsp;@Model.Name</div>
+
+        <div id="PlayPlaylistBtn" data-attr-plst="@ViewBag.PlaylistId"> &gt; Play Playlist</div>
+        <div id="AddNewSongBtn" data-attr-plst="@ViewBag.PlaylistId">+ Add New Song</div>
+        <div id="MakeDefaultBtn" data-attr-plst="@ViewBag.PlaylistId">- Make Default</div>
+
+
+        <div style="float:left; width:100%;">
+            @foreach (var item in Model.SongsList)
+            {
+                <div class="plst-SongItem" data-songid="@item.Id" data-song-guid="@item.YouTubeId">
+                    <div class="plst-ImgSong">
+                        <img alt="" src="//i.ytimg.com/vi/@item.YouTubeId/mqdefault.jpg" style="float:left; height:28px; margin:1px 0 0 3px;">
+                    </div>
+                    <div class="plst-PlaySong">@item.Artist - @item.Name</div>
+                    <div class="plst-DelSong">X</div>
+                </div>
+            }
+        </div>
+
+
+
+        <div style="float:left; width:100%; margin-top:3px;">
+
+            <div class="tags-ch">
+                @foreach (var item in Model.TagsList)
+                {
+                    <div class="plst-TagItem" data-tagid="@item.Id">
+                        @item.Name
+                    </div>
+                }
+                <div class="add-tag-btn">Add Tag</div>
+            </div>
+
+            <div class="add-tag-mch">
+                <input id="newTagVal" type="text" value="" />
+                <input id="newTagActbtn" type="button" value="Add New" />
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+    <script>
+
+
+    $(document).ready(function () {
+
+
+        $(".plst-SongItem").on("mouseover", function () {
+            $(this).css("background-color", "#dedede");
+
+            $(this).children(".plst-DelSong").css("background-color", "#CC0000");
+        });
+
+        $(".plst-SongItem").on("mouseout", function () {
+            $(this).css("background-color", "");
+
+            $(this).children(".plst-DelSong").css("background-color", "#d87171");
+        });
+
+
+        $(".plst-ImgSong").on("click", function () {
+            PlayerNavigatePlaySong($(this).parent().attr("data-song-guid"));
+        });
+        $(".plst-PlaySong").on("click", function () {
+            PlayerNavigatePlaySong($(this).parent().attr("data-song-guid"));
+        });
+
+
+        $(".plst-DelSong").on("click", function () {
+
+            if (confirm("Are you sure you want ot delete? ")) {
+
+                var itemObj = this;
+                var currSongId = $(this).parent().attr("data-songid");
+
+                $.get("/Data/Playlists/DeleteSong/@ViewBag.PlaylistId/" + currSongId, function () {
+                    $(itemObj).parent().css("display", "none");
+                });
+
+            }
+
+        });
+
+
+
+
+        $("#AddNewSongBtn").on("click", function () {
+            LightBoxOn();
+
+            $.get("/Playlists/AddSong/" + current_plst_id, function (data) {
+                LightBoxContent(data);
+            });
+        });
+
+        $("#PlayPlaylistBtn").on("click", function () {
+
+            OpenPlayer();
+
+            $.get("/player/playlist/" + $(this).attr("data-attr-plst"), function (data) {
+
+                $(".player-content").html(data);
+
+            });
+        });
+
+        $("#MakeDefaultBtn").on("click", function () {
+
+            $.get("/Data/Playlists/MakeDefault/" + $(this).attr("data-attr-plst"), function (data) {
+                LoadMyPlaylists();
+            });
+
+        });
+
+
+
+
+
+        //--------------------------------------------------------
+        //add tags
+        $(".add-tag-btn").on("click", function () {
+            if ($(".add-tag-mch").css("display") == "block") {
+                $(".add-tag-mch").css("display", "none");
+            }
+            else {
+                $(".add-tag-mch").css("display", "block");
+            }
+        });
+
+        $("#newTagActbtn").on("click", function () {
+
+            $.get("/Tags/Add/@(ViewBag.PlaylistId)?tag_name=" + $("#newTagVal").val(), function (data) {
+                $(".tags-ch").prepend("<div class='plst-TagItem' >" + $("#newTagVal").val() + "</div>");
+            });
+        });
+        //--------------------------------------------------------
+
+
+
+    });
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+@section scripts{
+}

@@ -1,0 +1,99 @@
+@model Playlist.Zone.Dto.Music.Playlist.AbstractPlaylistDto
+@{
+    ViewData["Title"] = "Chart";
+    Layout = null;
+
+    int song_id = 0;
+    string youtube_id = "";
+}
+
+
+<div style="float:left; width:100%; height:100%;">
+
+
+
+    <div style="float:left; width:100%; height:10%;">
+        <div class="addLikeBtn" style="float:left; width:45%; margin:0px 0 0 2%; padding:2px 2% 2px 2%; text-align:center; background-color:#3077be; color:#FFF; border-radius:4px; cursor:pointer;">
+            @Model.LikeNum Likes 
+        </div>
+        <div class="viewsNumBtn" style="float:left; width:45%; margin:0px 0 0 2%; padding:2px 2% 2px 2%; text-align:center; background-color:#3077be; color:#FFF; border-radius:4px; cursor:pointer;">
+            @Model.ViewNum Views
+        </div>
+    </div>
+
+
+
+    <div class="pls-controller" style="float:left; width:100%; height:90%; overflow:auto;">
+        @foreach (var item in Model.SongsList)
+        {
+            <div class="plst-Itm" data-song="@item.YouTubeId" data-id="@item.Id" style="cursor:pointer; width:100%; height:33px; line-height:33px; border-bottom:1px dotted #dedede; overflow:hidden; ">
+                @item.Artist - @item.Name
+            </div>
+
+            if (youtube_id == "")
+            {
+                song_id = item.Id;
+                youtube_id = item.YouTubeId;
+            }
+        }
+    </div>
+
+
+</div>
+
+
+
+
+
+
+<script>
+
+    $(document).ready(function () {
+
+        $('.player-ttl').text('@Model.Name');
+
+        $(".plst-Itm").click(function () {
+            OnSongClick($(this));
+
+            //playSong($(this).attr("data-id"), $(this).attr("data-song"));
+            //$(".plst-Itm").css("background-color", "#dedede");
+            //$(this).css("background-color", "#59caf1");
+        });
+
+
+
+        $(".addLikeBtn").on("click", function () {
+
+            $.get("/Data/Playlists/AddLike/@Model.Id", function (data) {
+                $(".addLikeBtn").html(data + " Likes");
+            });
+        });
+
+        $(".viewsNumBtn").on("click", function () {
+            //alert("Add view click");
+        });
+
+
+        OnSongClick($(".plst-Itm").first());
+
+        //playSong(@song_id, '@youtube_id');
+        //$(".plst-Itm").css("background-color", "#dedede");
+        //$(".plst-Itm[data-song='@youtube_id']").css("background-color", "#59caf1");
+
+});
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+@section Scripts
+{   
+}

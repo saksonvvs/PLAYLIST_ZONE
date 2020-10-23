@@ -1,0 +1,49 @@
+﻿@model Playlist.Zone.Dto.Music.Playlist.AbstractPlaylistDto
+@{
+    Layout = null;
+}
+
+
+
+<div style="float:left; width:100%;">
+
+    <div class="plst-det-header">&nbsp;@Model.Name</div>
+    <div id="PlayPlaylistBtn" data-attr-plst="@Model.Id" style="width:100%;"> > Play Playlist</div>
+
+    @foreach (var item in Model.SongsList)
+    {
+        <div class="plst-SongItem" data-songid="@item.Id" data-song-guid="@item.YouTubeId">
+            <div class="plst-ImgSong">
+                <img alt="" src="//i.ytimg.com/vi/@item.YouTubeId/mqdefault.jpg" >
+            </div>
+            <div class="plst-PlaySong">@item.Artist - @item.Name</div>
+        </div>
+    }
+</div>
+
+
+
+<script>
+    $(document).ready(function () {
+        
+        $(".plst-SongItem").on("mouseover", function () {
+            $(this).css("background-color", "#dedede");
+        });
+
+        $(".plst-SongItem").on("mouseout", function () {
+            $(this).css("background-color", "");
+        });
+
+        $(".plst-PlaySong").on("click", function () {
+            PlayerNavigatePlaySong($(this).parent().attr("data-song-guid"));
+        });
+        
+        $("#PlayPlaylistBtn").on("click", function () {
+            OpenPlayer();
+            $.get("/player/playlist/" + $(this).attr("data-attr-plst"), function (data) {
+                $(".player-content").html(data);
+            });
+        });
+
+    });
+</script>

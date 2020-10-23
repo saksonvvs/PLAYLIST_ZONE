@@ -1,0 +1,149 @@
+﻿@model Compiler.Abstractions.Dto.System.User.AbstractUserDto
+@{
+    ViewData["Title"] = "Account Info";
+    Layout = null;
+}
+
+
+<div class="row row-item">        
+</div>
+
+
+
+<div class="row row-item">
+
+    <div class="col-md-3" style="padding:0px; margin:0 0 0 0;">
+
+        <div class="sec-back" style="float:left; width:94%; min-height:42px; line-height:42px; margin:25px 0 0 3%; border-radius:2px;">
+            <div style="float:left; color:#FFFFFF; font-size:17px; margin:0 0 0 10px;">
+                Statistics
+            </div>
+
+            <div class="userPlstStats">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="col-md-9">
+
+        <div class="sec-back" style="float:left; width:100%; height:42px; line-height:42px; margin:25px 0 0 0; border-radius:2px;">
+            <div style="float:left; color:#FFFFFF; font-size:17px; margin:0 0 0 10px;">
+                My Account
+            </div>
+        </div>
+
+        <div style="float:left; width:100%; min-height:400px; border:1px dotted #CBCBCB; background-color:#f1f1f1; margin:20px 0 0 0;">
+
+            <form asp-controller="Account" asp-action="Info" method="post">
+
+                @Html.AntiForgeryToken()
+
+
+                <div style="float:left; width:60%; padding:0 10px 10px 10px;">
+
+
+
+
+                    <div style="float:left; width:100%; margin:10px 0 0 0;">
+                        <div style="float:left; width:100%; font-weight:bold; margin:7px 0 0 0;">Name:</div>
+                        <input asp-for="@Model.FirstName" placeholder="First name" style="width:49%; margin:0 1% 1% 0; border:1px solid #878787; " />
+                        <input asp-for="@Model.LastName" placeholder="Last name" style="width:49%; margin:0 1% 1% 0; border:1px solid #878787;" />
+                    </div>
+
+
+
+                    <div style="float:left; width:100%; margin:10px 0 0 0;">
+
+                        <div style="float:left; width:100%; font-weight:bold; margin:7px 0 0 0;">Login:</div>
+
+                        <div style="float:left; width:100%; padding:2px;">
+                            <input asp-for="@Model.Username" placeholder="Username" style="width:40%; margin:0 1% 0 0; background-color:#dedede; border:1px solid #878787;" readonly="readonly" />
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+                    <div style="float:left; width:100%; margin:10px 0 0 0;">
+
+                        <div style="float:left; width:100%; font-weight:bold; margin:7px 0 0 0;">Details:</div>
+
+                        <div style="float:left; width:100%; padding:2px;">
+                            <input asp-for="@Model.Email" placeholder="Email" style="width:33%; margin:0 1% 0 0; background-color:#dedede; border:1px solid #878787;" readonly="readonly" />
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+                    <div style="float:left; width:100%; margin:10px 0 0 0;">
+                        <div asp-validation-summary="All" style="float:left; width:100%; color:#CC0000;"></div>
+
+                        @if (ViewData["isAdmin"] == "1")
+                        {
+                            <input type="button" value="Admin Section" onclick="window.location = '/Admin/Home';" style="float:left; height:34px; border:1px solid #990000; background:#CC0000; border-radius:3px; padding:2px 15px 2px 15px; margin:13px 0 0 0; color:#FFFFFF;" />
+                        }
+
+                        <input type="button" onclick="alert('Not Implemented yet');" value="Save" style="float:left; min-width:120px; height:34px; border:1px solid #05a214; background:#05a214; border-radius:3px; padding:2px 45px 2px 45px; margin:13px 0 0 0; color:#FFFFFF;" />
+
+
+                    </div>
+
+                </div>
+
+
+
+
+                <div style="float:left; width:40%; padding:10px 10px 10px 10px;">
+
+                    <b>Account Info</b><br />
+
+                    <div style="float:left; width:100%; margin:10px 0 0 0;">
+
+                        <div style="float:left; width:100%; font-weight:bold; margin:7px 0 0 0;">Member Since:</div>
+
+                        <div style="float:left; width:100%; padding:2px;">
+                            <input value="@Model.DteCreated.ToShortDateString()" style="width:80%; margin:0 1% 0 0; background-color:#dedede; border:1px solid #878787;" readonly="readonly" />
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+            </form>
+
+
+        </div>
+    </div>
+
+
+</div>
+
+
+<script>
+
+    $(document).ready(function () {
+
+        $.get("/Account/User/Stats", function (data) {
+            $(".userPlstStats").html(data);
+        });
+
+    });
+
+</script>
+
+
+
+
+

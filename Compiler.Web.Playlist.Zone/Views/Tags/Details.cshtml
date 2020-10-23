@@ -1,0 +1,87 @@
+﻿@model List<Playlist.Zone.Dto.Music.Playlist.AbstractPlaylistDto>
+@{
+    ViewData["Title"] = "Playlists";
+    Layout = null;
+}
+
+
+
+
+<div style="float:left; width:100%; margin:0 0 0 0;">
+
+    @foreach (var item in Model)
+    {
+        <div class="plst-Item" data-plstid="@item.Id" data-userid="@item.UserId" style="height:50px; line-height:50px; background-color:#EFEFEF; margin-bottom:2px;">
+            <div style="float:left; width:20%; height:100%">@item.Name</div>
+            <div class="plst-Icons" style="float:left; width:80%; height:100%; overflow:hidden;"></div>
+        </div>
+    }
+
+</div>
+
+
+
+
+<script>
+
+    $(document).ready(function () {
+
+        $(".plst-Item").off("mouseover", "**");
+        $(".plst-Item").off("mouseout", "**");
+        $(".plst-Item").off("click", "**");
+
+
+        $(".plst-Item").on("mouseover", function () {
+            $(this).css("background-color", "#dedede");
+
+            $(this).children(".plst-DelPlst").css("background-color", "#cdcdcd");
+        });
+
+
+        $(".plst-Item").on("mouseout", function () {
+            $(this).css("background-color", "#EFEFEF");
+
+            $(this).children(".plst-DelPlst").css("background-color", "#dedede");
+        });
+        
+
+        $(".plst-Item").on("click", function () {
+
+            var plst_id = $(this).attr("data-plstid");
+            var user_id = $(this).attr("data-userid");
+            
+            OpenPlayer();
+
+            $.get("/player/playlist/" + plst_id, function (data) {
+                $(".player-content").html(data);
+            });
+            
+        });
+
+
+        //--->/Data/Playlist/Details/Icons/{pPlaylistId}
+
+        $(".plst-Item").each(function () {
+
+            var plst = $(this);
+            $.get("/Data/Playlist/Details/Icons/" + $(plst).attr("data-plstid"), function (data) {
+                
+                var imgContent = "";
+
+                var iconsList = JSON.parse(data);
+                for (var i in iconsList) {
+                    imgContent += "<img alt='' src='//i.ytimg.com/vi/"+ iconsList[i] +"/mqdefault.jpg' style='float:left; height:100%; margin-left:2px;' />"
+                }
+
+                //alert($(this).find(".plst-Icons"));
+                $(plst).find(".plst-Icons").html(imgContent);
+            });
+            
+        });
+
+
+        
+
+    });
+
+</script>

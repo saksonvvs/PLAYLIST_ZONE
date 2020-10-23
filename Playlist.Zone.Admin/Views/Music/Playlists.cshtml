@@ -1,0 +1,90 @@
+﻿@model List<Playlist.Zone.Dto.Music.Playlist.AbstractPlaylistDto>
+@{
+    ViewData["Title"] = "Platlists";
+}
+
+
+
+
+<div class="row row-item">
+
+
+    <div class="col-md-3">
+        <h2>Total Playlist</h2>
+        <ul>
+            <li>@Model.Count</li>
+        </ul>
+    </div>
+    <div class="col-md-3">
+        <h2>Recent Playlists</h2>
+        <ul>
+            @{
+                int counter = 10;
+                foreach (var item in Model)
+                {
+                    <li><a href="/Player/Playlist/">@item.Name</a></li>
+
+                    if(counter <= 0)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        counter -= 1;
+                    }
+                }
+            }
+        </ul>
+    </div>
+
+    <div class="col-md-3">
+        <h2>&nbsp;</h2>
+        <ul>
+            <li></li>
+        </ul>
+    </div>
+    <div class="col-md-3">
+        <h2>&nbsp;</h2>
+        <ul>
+            <li>&nbsp;</li>
+        </ul>
+    </div>
+</div>
+
+
+
+
+<div class="row" style="margin-top:40px;">
+
+    <div class="loc-md-6">
+        
+    </div>
+
+    <div class="loc-md-6">
+
+    </div>
+
+</div>
+
+
+
+@section Scripts
+{
+
+    <script>
+
+        $(document).ready(function () {
+
+            /*$("#LoadChartContentBtn").on("click", function () {
+
+                $.get("https://www.apple.com/itunes/charts/songs/", function (data) {
+                    alert(data);
+                });
+
+            });*/
+
+        });
+
+    </script>
+
+}

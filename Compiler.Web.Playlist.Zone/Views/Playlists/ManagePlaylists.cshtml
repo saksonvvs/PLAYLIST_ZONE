@@ -1,0 +1,89 @@
+﻿@model List<Playlist.Zone.Dto.Music.Playlist.AbstractPlaylistDto>
+@{
+    Layout = null;
+}
+
+
+    <div style="float:left; width:100%;">
+
+        <div class="ttlPlaylists">Playlists</div>
+        <div id="AddNewPlaylistBtn">+ Add New playlist</div>
+
+
+        @foreach (var item in Model)
+        {
+            <div class="plst-Item isDef-@(item.IsDefault)" data-plstid="@item.Id">
+                <div style="float:left; width:85%;">@item.Name</div>
+                <div class="plst-DelPlst">X</div>
+                <div class="plst-EditPlst">E</div>
+            </div>
+        }
+    </div>
+
+
+
+
+<script>
+
+
+    $(document).ready(function () {
+        
+        $(".plst-Item").off("mouseover", "**");
+        $(".plst-Item").off("mouseout", "**");
+        $(".plst-Item").off("click", "**");
+
+
+        $(".plst-Item").on("mouseover", function () {
+            $(this).css("background-color", "#dedede");
+
+            $(this).children(".plst-DelPlst").css("background-color", "#CC0000");
+        });
+
+
+        $(".plst-Item").on("mouseout", function () {
+            $(this).css("background-color", "");
+
+            $(this).children(".plst-DelPlst").css("background-color", "#d87171");
+        });
+
+
+        $(".plst-Item").on("click", function () {
+            LoadPlaylistDetails($(this).attr("data-plstid"));
+        });
+
+
+
+        $(".plst-EditPlst").on("click", function () {
+            LightBoxOn();
+
+            $.get("/Playlists/Rename/" + $(this).parent().attr("data-plstid"), function (data) {
+                LightBoxContent(data);
+            });
+
+        });
+
+
+        //----------------------------------------------------------------------------------------
+        $("#AddNewPlaylistBtn").click(function () {
+            LightBoxOn();
+
+            $.get("/Playlists/Add", function (data) {
+                LightBoxContent(data);
+            });
+        });
+        //----------------------------------------------------------------------------------------
+
+
+    });
+
+
+
+
+</script>
+
+
+
+
+
+
+

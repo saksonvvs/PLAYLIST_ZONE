@@ -1,0 +1,501 @@
+﻿
+
+#SearchBarTxt {
+    width:100%; 
+    height:32px; 
+    line-height:32px; 
+    margin:5px 5px 5px 0; 
+    padding:2px 10px 0px 10px; 
+    color:#000000; 
+    background-color:#efefef; 
+    border-radius:3px; 
+    border:1px dotted #dedede;
+}
+
+
+    #SearchBarTxt:focus {
+        background-color: #FCF088;
+        height: 50px;
+        transition: height 0.25s ease-in;
+    }
+
+    #SearchBarTxt:blur {
+        background-color: #efefef;
+        height: 32px;
+        transition: height 0.25s ease-in;
+    }
+
+
+
+.ttl-tags {
+    float: left;
+    width: 100%;
+    font-weight: 400;
+}
+
+
+
+.cnt-side-tags {
+    float:left; width:100%;
+}
+
+
+
+.tag-m-itm {
+    float: left;
+    padding: 3px 10px;
+    background-color: #578096;
+    color: #FFFFFF;
+    border-radius: 2px;
+    margin-top: 4px;
+    margin-right: 4px;
+    cursor: pointer;
+}
+
+
+
+.ttl-srch-results {
+    float:left; 
+    width:100%; 
+    font-weight:400; 
+    padding-left:1%;
+}
+
+
+.search-res-list #nextPageBtn {
+    margin:10px 0 0 10px; 
+    padding:5px 40px 5px 40px; 
+    color:#FFFFFF; 
+    border:none; 
+    border-radius:3px;
+}
+
+
+
+
+
+
+/* search page */
+/* ----------------------------------------------------------*/
+
+
+.artist-main-cnt
+{
+    height:200px; 
+    overflow:hidden;
+}
+
+
+.itm-Srch-Artist {
+    cursor: pointer;
+    float: left;
+    width: 10%;
+    height: 200px;
+    background-size: cover;
+}
+
+.itm-Blnk {
+    float:left; 
+    width:10%; 
+    height:200px; 
+    background-color:#FFFFFF;
+}
+
+
+
+.artist-moby {
+    background: url('/images/singers/moby.jpg') center;
+    background-size: cover;
+}
+
+
+.artist-calvin-harris {
+    background: url('/images/singers/calvin-harris.jpg') center;
+    background-size: cover;
+}
+
+.artist-david-guetta {
+    background: url('/images/singers/david-guetta.jpg') center;
+    background-size: cover;
+}
+
+.artist-demi-lovato {
+    background: url('/images/singers/demi-lovato.jpg') center;
+    background-size: cover;
+}
+
+.artist-jay-z {
+    background: url('/images/singers/jay-z.jpg') center;
+    background-size: cover;
+}
+
+.artist-snoop-dog {
+    background: url('/images/singers/snoop-dogg.jpg') center;
+    background-size: cover;
+}
+
+.artist-taylor-swift {
+    background: url('/images/singers/taylor-swift.jpg') center;
+    background-size: cover;
+}
+
+.artist-ed-sheeran {
+    background:url('/images/singers/Ed-Sheerann.jpg') center; 
+    background-size:cover;
+}
+
+.artist-katy-perry {
+    background:url('/images/singers/katy-perry.jpg') center; 
+    background-size:cover;
+}
+
+.artist-bruno-mars {
+    background:url('/images/singers/bruno-mars.jpg') center; 
+    background-size:cover;
+}
+
+
+@media screen and (max-width:1200px)
+{
+    .itm-Srch-Artist {
+        width: 20%;
+        height: 200px;
+    }
+}
+
+
+@media screen and (max-width:800px) {
+    .itm-Srch-Artist {
+        width: 25%;
+        height: 200px;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .itm-Srch-Artist {
+        width: 33%;
+        height: 200px;
+    }
+}
+
+/* --------------------------------------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+.ssr-cont {
+    float: left;
+    width: 98%;
+    min-height: 58px;
+    margin: 5px 0 0 1%;
+    padding: 3px;
+    cursor: pointer;
+    background-color: #efefef;
+    overflow: hidden;
+}
+
+.ssr-cont .l-cont {
+    float: left;
+    width: 69%;
+    height:100%;
+    height: 97%;
+    margin-left: 2px;
+}
+
+.ssr-cont .r-cont {
+    float: left;
+    width: 28%;
+    height: 100%;
+    margin-left: 1%;
+}
+
+.ssr-cont img {
+    float: left;
+    width: 110px;
+    margin-top: 2px;
+}
+
+
+
+.ssr-cont .img-holder {
+    float:left; width:17%; height:100%;
+}
+
+.ssr-cont .cnt-holder {
+    float:left; width:80%; height:100%;
+    margin-left:3%;
+}
+
+
+
+.ssr-cont .songName {
+    float: left;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'Roboto', sans-serif;
+    margin: 1% 0 0 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+
+.ssr-cont .songDetails {
+    float: left;
+    width: 100%;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    margin: 0.6% 0 0 0;
+    width:100%; 
+    font-size:12px;
+}
+
+
+
+.ssr-cont .addSongBtn {
+    float: right;
+    background-color: #0779b7;
+    color: #FFFFFF;
+    margin: 10px;
+    padding: 3px 7px 3px 7px;
+    border-radius: 3px;
+    min-width: 100px;
+    height:28px;
+    line-height:25px;
+    text-align: center;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+}
+
+.ssr-cont .playSongBtn {
+    float: right;
+    background-color: #0779b7;
+    color: #FFFFFF;
+    margin: 10px;
+    padding: 3px 7px 3px 7px;
+    border-radius: 3px;
+    min-width: 100px;
+    height: 28px;
+    line-height: 25px;
+    text-align: center;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+
+
+
+
+@media(max-width : 500px) {
+    .ssr-cont img {
+        float: left;
+        width: 20%;
+    }
+
+    .ssr-cont .r-cont {
+        float: left;
+        width: 79%;
+        margin-left: 1%;
+    }
+
+    .ssr-cont .songName {
+        float: left;
+        width: 79%;
+        height: 20px;
+        line-height: 20px;
+        overflow: hidden;
+        margin: 0 0 0 10%;
+    }
+
+    .ssr-cont .addSongBtn {
+        width: 40%;
+        margin-top: 3px;
+    }
+
+    .ssr-cont .playSongBtn {
+        width: 40%;
+        margin-top: 3px;
+    }
+}
+
+
+.tags-list {
+    float: left;
+    width: 20%;
+    padding: 0 1% 0 1%;
+    height: 100%;
+    margin-top: 10px;
+}
+
+.search-res-list {
+    float: left;
+    width: 80%;
+    height: 100%;
+    margin-top: 10px;
+}
+
+
+
+
+
+/* -------------------------------------- */
+/*      MEDIA                             */
+/* -------------------------------------- */
+
+
+@media(max-width: 300px) {
+
+    .tags-list {
+        display: none;
+    }
+
+    .search-res-list {
+        width: 100%;
+    }
+
+    .ssr-cont .img-holder {
+        width: 37%;
+    }
+
+    .ssr-cont .cnt-holder {
+        width: 61%;
+        margin-left: 2%;
+    }
+
+
+    .ssr-cont .addSongBtn {
+        min-width: 60px;
+        width: 60px;
+        height: 28px;
+    }
+
+    .ssr-cont .playSongBtn {
+        min-width: 60px;
+        width: 60px;
+        height: 28px;
+    }
+
+    .ssr-cont .r-cont {
+        float: left;
+        width: 25%;
+        margin-left: 1%;
+    }
+}
+
+
+
+
+@media(max-width: 500px) {
+
+    .tags-list {
+        display: none;
+    }
+
+    .search-res-list {
+        width: 100%;
+    }
+
+    .ssr-cont .img-holder {
+        width: 37%;
+    }
+
+    .ssr-cont .cnt-holder {
+        width: 61%;
+        margin-left: 2%;
+    }
+
+
+    .ssr-cont .addSongBtn {
+        min-width: 60px;
+        width: 60px;
+        height: 28px;
+    }
+
+    .ssr-cont .playSongBtn {
+        min-width: 60px;
+        width: 60px;
+        height: 28px;
+    }
+
+    .ssr-cont .r-cont {
+        float: left;
+        width: 25%;
+        margin-left: 1%;
+    }
+}
+
+
+
+
+
+@media(max-width: 800px) {
+
+    .tags-list {
+        display: none;
+    }
+
+    .search-res-list {
+        width: 100%;
+    }
+
+    .ssr-cont .img-holder {
+        width: 27%;
+    }
+
+    .ssr-cont .cnt-holder {
+        width: 71%;
+        margin-left: 2%;
+    }
+
+}
+
+
+@media(max-width:1150px) {
+    
+    .ssr-cont .addSongBtn {
+        margin: 5px 5px 0 0;
+    }
+
+    .ssr-cont .playSongBtn {
+        margin: 5px 5px 0 0;
+    }
+
+    .ssr-cont .img-holder {
+        width: 22%;
+    }
+
+    .ssr-cont .cnt-holder {
+        width: 76%;
+        margin-left: 2%;
+    }
+
+}
+
+
+@media(max-width:1250px) {
+
+    .ssr-cont .img-holder {
+        width: 20%;
+    }
+
+    .ssr-cont .cnt-holder {
+        width: 78%;
+        margin-left: 2%;
+    }
+
+}
+
+
+
+
+
+/* search page */

@@ -1,0 +1,30 @@
+﻿
+-- TBL Category ************************************************************** 
+
+CREATE TABLE `playlist_zone`.`category` (
+  `Id` INT(11) NOT NULL AUTO_INCREMENT,
+  `Uid` VARCHAR(100) NOT NULL DEFAULT '',
+  `Name` VARCHAR(100) NOT NULL DEFAULT '',
+  `ParentCategoryId` INT(11) NOT NULL DEFAULT '0',
+  `DteCreated` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `CreatedBy` INT(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`Id`));
+
+
+
+  -- TBL Tag **************************************************************
+
+  CREATE TABLE `playlist_zone`.`tag` (
+  `Id` INT(11) NOT NULL AUTO_INCREMENT,
+  `Uid` VARCHAR(100) NULL DEFAULT '',
+  `Name` VARCHAR(100) NULL DEFAULT '',
+  `DteCreated` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+  `CreatedBy` INT NULL DEFAULT '0',
+  PRIMARY KEY (`Id`));
+
+
+  -- TBL Tag Playlist Id **************************************************************
+
+  CREATE TABLE `playlist_zone`.`tag_owner_rel` (
+  `TagId` INT NULL,
+  `OwnerId` INT NULL);

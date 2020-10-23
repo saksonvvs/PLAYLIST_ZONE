@@ -1,0 +1,77 @@
+@model Playlist.Zone.Dto.Music.Charts.AbstractChartDto
+@{
+    ViewData["Title"] = "Chart";
+    Layout = null;
+
+    int song_id = 0;
+    string youtube_id = "";
+}
+
+<div class="plr-ch">
+
+
+
+    <div style="float:left; width:100%; height:10%;">
+        <div class="addLike">
+            Likes
+        </div>
+        <div class="viewsNum">
+            Views
+        </div>
+    </div>
+
+
+
+    <div class="pls-controller" style="float:left; width:100%; height:90%; overflow:auto;">
+        @foreach (var item in Model.SongsList)
+        {
+            <div class="plst-Itm" data-song="@item.YouTubeId" data-id="@item.Id">
+                @item.Artist - @item.Name
+            </div>
+
+            if (youtube_id == "")
+            {
+                song_id = item.Id;
+                youtube_id = item.YouTubeId;
+            }
+        }
+    </div>
+
+
+</div>
+
+
+<script>
+    
+    $(document).ready(function () {
+    
+        $(".plst-Itm").on("click", function () {
+            OnSongClick($(this));
+
+            /*playSong($(this).attr("data-id"), $(this).attr("data-song"));
+            $(".plst-Itm").css("background-color", "#dedede");
+            $(this).css("background-color", "#59caf1");*/
+        });
+
+    
+        $(".addLike").on("click", function () {
+            $.get("/Data/Charts/AddLike/@Model.Id", function (data) {
+                //alert(data);
+            });
+        });
+
+
+        OnSongClick($(".plst-Itm").first());
+
+        //playSong(@song_id, '@youtube_id');
+        //$(".plst-Itm").css("background-color", "#dedede");
+        //$(".plst-Itm[data-song='@youtube_id']").css("background-color", "#59caf1");
+    });
+
+</script>
+
+
+
+@section Scripts
+{
+}
