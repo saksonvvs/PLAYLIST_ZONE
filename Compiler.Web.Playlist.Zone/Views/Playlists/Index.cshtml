@@ -118,6 +118,11 @@
             
             $("#SongsCH1").html("");
             $("#SongsCH1").html(playlistData);
+
+            if ($(window).width() < 1000) {
+                //alert("TT" + $("#SongsCH1").position().top);
+                $("#SearchResultsCh").scrollTop( $("#SongsCH1").position().top);
+            }
             
         });
     }

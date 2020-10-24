@@ -240,6 +240,33 @@ input, select, textarea
 
 
 
+@media(max-width:500px)
+{
+    .myPlstsBtn {
+        height: 35px;
+        line-height: 22px;
+    }
+
+    .popularPlstsBtn {
+        height: 35px;
+        line-height: 22px;
+    }
+
+
+    .mostViewedPlstsBtn {
+        height: 35px;
+        line-height: 22px;
+    }
+}
+
+
+
+
+
+
+
+
+
 
 
 

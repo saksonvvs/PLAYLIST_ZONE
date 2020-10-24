@@ -1,1 +1,88 @@
 ﻿
+
+/*------------MENU BUTTONS -----------------------*/
+
+
+
+.mmHome {
+    cursor:pointer; color:#FFFFFF; font-size:18px;
+}
+
+
+.mmSearch {
+    cursor: pointer;
+}
+
+.mmCharts {
+    cursor: pointer;
+}
+
+.mmPlaylists {
+    cursor: pointer;
+}
+
+.mmTags {
+    cursor: pointer;
+}
+
+
+.mmAccount {
+    float:right; 
+    color:#ffffff; 
+    cursor:pointer;
+}
+
+.mmSep {
+    float:right; 
+    color:#ffffff; 
+    cursor:pointer; 
+    padding:0 8px 0 8px;
+}
+
+
+.mmSignOut {
+    float: right;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.mmLogin {
+    float:right; 
+    color:#ffffff; 
+    cursor:pointer;
+}
+
+.mmRegister {
+    float:right; 
+    color:#ffffff; 
+    cursor:pointer;
+}
+
+/*------------MENU BUTTONS -----------------------*/
+
+
+
+
+
+
+/*-----------CONTENT CONTAINERS-------------------*/
+
+.hdr-cont {
+    width:100%; 
+    background-color:#808080; 
+    border-radius:3px;
+}
+
+
+.body-content {
+    margin:20px 0 0 0;
+}
+
+.main-content {
+    margin:23px 0 0 0; overflow:auto;
+}
+
+/*-----------CONTENT CONTAINERS-------------------*/
+
+
+

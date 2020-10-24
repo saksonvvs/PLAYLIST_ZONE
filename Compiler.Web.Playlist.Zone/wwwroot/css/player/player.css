@@ -66,22 +66,129 @@
 
 
 
-/*--------------------------------*/
+
+/*----------PLAYER CONTENT---------------------*/
 
 .player-mch {
-    display:none; 
-    position:absolute; 
-    top:330px; 
-    left:10px; 
-    width:650px; 
-    height:320px; 
-    background-color:#dedede; 
-    border:1px dotted #ababab; 
-    padding:10px; 
-    -webkit-box-shadow: -3px 1px 15px 7px rgba(0,0,0,0.37); 
+    display: none;
+    position: absolute;
+    top: 330px;
+    left: 10px;
+    width: 650px;
+    height: 320px;
+    background-color: #dedede;
+    border: 1px dotted #ababab;
+    padding: 10px;
+    -webkit-box-shadow: -3px 1px 15px 7px rgba(0,0,0,0.37);
     box-shadow: -3px 1px 15px 7px rgba(0,0,0,0.37);
+}
+
+.player-header {
+    float:left; 
+    width:100%; 
+    height:28px; 
+    background-color:#cdcdcd; 
+    padding:3px;
+}
+
+
+.player-ttl {
+    float:left; 
+    width:80%; 
+    height:28px; 
+    font-weight:600; 
+    font-size:16px; 
+    padding-left:10px; 
+    cursor:pointer; 
+    overflow:hidden;
+}
+
+
+.player-nav-cnt {
+    float:right; 
+    width:20%;
+}
+
+.close-btn {
+    float: right;
+    cursor: pointer;
+    padding: 0 6px 0 6px;
+    color: #FFFFFF;
+    background-color:#064459;
+    border: 1px solid #064459;
+}
+
+
+.minimize-btn {
+    float: right;
+    cursor: pointer;
+    padding: 0 6px 0 6px;
+    color: #FFFFFF;
+    margin: 0 5px 0 0;
+    background-color: #064459;
+    border: 1px solid #064459;
 }
 
 
 
-/*--------------------------------*/
+.player-cont {
+    float:left; 
+    width:100%;
+}
+
+
+.player-child-cont {
+    float:left; 
+    width:380px;
+}
+
+
+.pls-controller {
+    float: left;
+    width: 100%;
+    height: 90%;
+    overflow: auto;
+}
+
+
+
+.plst-Itm {
+    cursor:pointer; 
+    width:100%; 
+    height:33px; 
+    line-height:33px; 
+    border-bottom:1px dotted #dedede; 
+    overflow:hidden;
+}
+
+
+
+
+.player-controls {
+    float:left; 
+    width:100%; 
+    height:33px; 
+    line-height:33px; 
+    margin-top:5px;
+}
+
+
+.player-name {
+    float:left; width:100%;
+}
+
+
+.main-back {
+    border:3px solid #064459; width:400px; height:250px;
+}
+
+
+.player-content {
+    float:left; 
+    width:260px; 
+    height:290px; 
+    overflow:hidden; 
+    margin:5px 0 0 5px;
+}
+
+/*----------PLAYER CONTENT---------------------*/
