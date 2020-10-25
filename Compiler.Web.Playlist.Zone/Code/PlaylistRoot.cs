@@ -7,6 +7,6 @@ namespace Compiler.Web.Playlist.Zone.Code
 {
     public class PlaylistRoot
     {
-        public static string CacheControl = "19000035";
+        public static string CacheControl = "19000036";
     }
 }
