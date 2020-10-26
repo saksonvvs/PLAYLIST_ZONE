@@ -10,12 +10,13 @@
         Popular Playlists
     </div>
 
-
     @foreach(var item in Model)
     {
-        <div class="plst-Item" data-plstid="@item.Id" data-userid="@item.UserId">
-            <div style="float:left; width:90%;">@item.Name</div>
-        </div>
+<div class="plst-Item" data-plstid="@item.Id" data-userid="@item.UserId">
+    <div style="float:left; width:80%;">@item.Name</div>
+    <div style="float:left; width:10%;">V: @item.ViewNum</div>
+    <div style="float:left; width:10%;">L: @item.LikeNum</div>
+</div>
     }
 </div>
 

@@ -11,12 +11,12 @@
         <div class="rfc" onclick="LightBoxOff();">X</div>
     </div>
 
-    <div style="float:left; width:100%; margin:10px 0 0 0;">
+    <div class="com-cont top-margin-10">
         <span>Playlist Name</span>
         <input id="AddNewPlstNameTxt" type="text" value="" />
     </div>
 
-    <div style="float:left; width:100%; margin:10px 0 0 0;">
+    <div class="com-cont top-margin-10">
         <input type="button" id="AddPlstCancelBtn" value="Cancel"  />
         <input type="button" id="AddPlstCompBtn" value="Add New Playlist" />
     </div>
@@ -35,22 +35,18 @@
 
 
         $("#AddPlstCompBtn").click(function () {
-
             var plst_name = "";
             plst_name = $("#AddNewPlstNameTxt").val();
 
-            
             $.post("/Data/Playlists/Add/" + plst_name, function (data) {
                 LightBoxOff();
                 LoadMyPlaylists();
             });
-
         });
 
 
         $("#AddPlstCancelBtn").click(function () {
             LightBoxOff();
         });
-
     });
 </script>

@@ -40,14 +40,11 @@
 
 
 <script>
-
     var current_plst_id = 0;
-
 
     $(window).resize(function () {
         $("#SongsCH1").css("height", ($(window).height() - 140) + "px");
     });
-
 
     $(document).ready(function () {
         
@@ -120,7 +117,6 @@
             $("#SongsCH1").html(playlistData);
 
             if ($(window).width() < 1000) {
-                //alert("TT" + $("#SongsCH1").position().top);
                 $("#SearchResultsCh").scrollTop( $("#SongsCH1").position().top);
             }
             

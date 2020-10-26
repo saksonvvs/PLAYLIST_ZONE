@@ -8,8 +8,6 @@ namespace Compiler.Web.Playlist.Zone.Controllers
 {
     public class ErrorController : Controller
     {
-        public static string Name = "Error";
-
         
 
         [Route("/Error/Problem")]

@@ -8,12 +8,13 @@ function InitSearchBar(controlName)
             StartSearch(keyVal);
         }
     });
+}
 
-    StartSearch = function (keyVal) {
-        PreloaderOn(".main-content");
 
-        $.get("/Search/Keyword/" + keyVal, function (data) {
-            $(".main-content").html(data);
-        });
-    }
+StartSearch = function (keyVal) {
+    PreloaderOn(".main-content");
+
+    $.get("/Search/Keyword/" + keyVal, function (data) {
+        $(".main-content").html(data);
+});
 }

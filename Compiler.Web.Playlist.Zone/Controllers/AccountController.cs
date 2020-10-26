@@ -23,7 +23,7 @@ namespace Compiler.Web.Playlist.Zone.Controllers.Controllers
 
     [Authorize(Roles = "User")]
     [NoCache]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         protected readonly IBaseSettings _baseSettings;
         protected readonly IUserEntity _userEntity;

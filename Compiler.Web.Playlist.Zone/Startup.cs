@@ -108,7 +108,7 @@ namespace Compiler.Web.Playlist.Zone
                 app.UseExceptionHandler("/Home/Error");
             }
 
-            app.UseStaticFiles();
+             app.UseStaticFiles();
 
 
 

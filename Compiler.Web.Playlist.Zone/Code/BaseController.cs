@@ -1,4 +1,5 @@
-﻿using Compiler.Web.Playlist.Zone.Controllers;
+﻿using Compiler.Services.Logging;
+using Compiler.Web.Playlist.Zone.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,14 @@ namespace Compiler.Web.Playlist.Zone.Code
 {
     public class BaseController : Controller
     {
+        public readonly ILogService _logger;
+
+
+        public BaseController(ILogService _pLogger)
+        {
+            _logger = _pLogger;
+        }
+
 
 
         public IActionResult ErrorProblem()

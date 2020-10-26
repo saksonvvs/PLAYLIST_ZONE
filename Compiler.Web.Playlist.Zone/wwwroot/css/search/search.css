@@ -238,11 +238,11 @@
 .ssr-cont .songName {
     float: left;
     width: 100%;
+    height:27px;
     font-size: 18px;
     font-weight: 600;
     font-family: 'Roboto', sans-serif;
     margin: 1% 0 0 0;
-    width: 100%;
     overflow: hidden;
 }
 

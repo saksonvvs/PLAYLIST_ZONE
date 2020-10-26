@@ -5,11 +5,21 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Compiler.Web.Playlist.Zone.Models;
+using Compiler.Web.Playlist.Zone.Code;
+using Microsoft.Extensions.Configuration;
 
 namespace Compiler.Web.Playlist.Zone.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
+        public IConfiguration _config;
+
+        public HomeController(IConfiguration pConfig)
+        {
+            _config = pConfig;
+        }
+
+
 
         public IActionResult Index()
         {

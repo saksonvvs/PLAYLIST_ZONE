@@ -4,21 +4,20 @@
 }
 
 
-    <div style="float:left; width:100%;">
+<div style="float:left; width:100%;">
+    <div class="ttlPlaylists">Playlists</div>
+    <div id="AddNewPlaylistBtn">+ Add New playlist</div>
 
-        <div class="ttlPlaylists">Playlists</div>
-        <div id="AddNewPlaylistBtn">+ Add New playlist</div>
 
-
-        @foreach (var item in Model)
-        {
-            <div class="plst-Item isDef-@(item.IsDefault)" data-plstid="@item.Id">
-                <div style="float:left; width:85%;">@item.Name</div>
-                <div class="plst-DelPlst">X</div>
-                <div class="plst-EditPlst">E</div>
-            </div>
-        }
-    </div>
+    @foreach (var item in Model)
+    {
+        <div class="plst-Item isDef-@(item.IsDefault)" data-plstid="@item.Id">
+            <div style="float:left; width:85%;">@item.Name</div>
+            <div class="plst-DelPlst">X</div>
+            <div class="plst-EditPlst">E</div>
+        </div>
+    }
+</div>
 
 
 
@@ -52,7 +51,6 @@
         });
 
 
-
         $(".plst-EditPlst").on("click", function () {
             LightBoxOn();
 
@@ -62,8 +60,6 @@
 
         });
 
-
-        //----------------------------------------------------------------------------------------
         $("#AddNewPlaylistBtn").click(function () {
             LightBoxOn();
 
@@ -71,14 +67,8 @@
                 LightBoxContent(data);
             });
         });
-        //----------------------------------------------------------------------------------------
-
 
     });
-
-
-
-
 </script>
 
 
