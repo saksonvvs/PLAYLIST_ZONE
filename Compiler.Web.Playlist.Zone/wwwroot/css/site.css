@@ -58,9 +58,15 @@ ul li
 }
 
 
+
+.navbar a:hover {
+    color: #FFFFFF;
+}
+
 a:hover {
     color: #090979;
 }
+
 
 
 

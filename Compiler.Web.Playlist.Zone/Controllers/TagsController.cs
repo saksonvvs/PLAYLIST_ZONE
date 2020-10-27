@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Compiler.Abstractions.Dto.Common.Tag;
 using Compiler.Interfaces.Common.Datatier.Tag;
+using Compiler.Services.Logging;
 using Compiler.Web.Playlist.Zone.Code;
 using Microsoft.AspNetCore.Mvc;
 using Playlist.Zone.Datatier.Music.Playlists;
@@ -20,8 +21,10 @@ namespace Compiler.Web.Playlist.Zone.Controllers
         public readonly IPlaylistEntity _playlistEntity;
 
 
-        public TagsController(ITagEntity pTagEntity,
-                              IPlaylistEntity pPlaylistEntity)
+        public TagsController(
+            ITagEntity pTagEntity,
+            IPlaylistEntity pPlaylistEntity,
+            ILogService pLogger) : base(pLogger)
         {
             _tagEntity = pTagEntity;
             _playlistEntity = pPlaylistEntity;

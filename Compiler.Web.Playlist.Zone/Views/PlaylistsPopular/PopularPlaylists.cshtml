@@ -12,11 +12,11 @@
 
     @foreach(var item in Model)
     {
-<div class="plst-Item" data-plstid="@item.Id" data-userid="@item.UserId">
-    <div style="float:left; width:80%;">@item.Name</div>
-    <div style="float:left; width:10%;">V: @item.ViewNum</div>
-    <div style="float:left; width:10%;">L: @item.LikeNum</div>
-</div>
+        <div class="plst-Item" data-plstid="@item.Id" data-userid="@item.UserId">
+            <div style="float:left; width:80%;">@item.Name</div>
+            <div style="float:left; width:10%;">V: @item.ViewNum</div>
+            <div style="float:left; width:10%;">L: @item.LikeNum</div>
+        </div>
     }
 </div>
 
@@ -24,56 +24,67 @@
 
 
 <script>
+
+    var parentCont = undefined;
     
     $(document).ready(function () {
-
 
         $(".plst-Item").off("mouseover", "**");
         $(".plst-Item").off("mouseout", "**");
         $(".plst-Item").off("click", "**");
 
-
         $(".plst-Item").on("mouseover", function () {
-
-            if ($(this).hasClass("selected") == "plstSelected")
-                return;
-
-            $(this).css("background-color", "#dedede");
-            $(this).children(".plst-DelPlst").css("background-color", "#cdcdcd");
+            PlaylistItemMouseOver(this);
         });
-
 
         $(".plst-Item").on("mouseout", function () {
+            PlaylistItemMouseOut(this);
+        });
 
-            $(this).css("background-color", "");
-
-            $(this).children(".plst-DelPlst").each(function () {
-                if ($(this).hasClass("selected") != "plstSelected")
-                    $(this).css("background-color", "#dedede")
-            });
-
+        $(".plst-Item").on("click", function () {
+            PlaylistItemClick(this);
         });
 
 
 
-        $(".plst-Item").on("click", function () {
+        
+        function PlaylistItemMouseOver(sender) {
+            if ($(sender).hasClass("selected") == "plstSelected")
+                return;
+
+            $(sender).css("background-color", "#dedede");
+            $(sender).children(".plst-DelPlst").css("background-color", "#cdcdcd");
+        }
+
+
+        
+        function PlaylistItemMouseOut(sender) {
+
+            $(sender).css("background-color", "");
+
+            $(sender).children(".plst-DelPlst").each(function () {
+                if ($(sender).hasClass("selected") != "plstSelected")
+                    $(sender).css("background-color", "#dedede")
+            });
+
+        }
+
+
+        function PlaylistItemClick(sender) {
 
             $(".plst-Item").removeClass("plstSelected");
 
+            var plst_id = $(sender).attr("data-plstid");
+            var user_id = $(sender).attr("data-userid");
 
-            var plst_id = $(this).attr("data-plstid");
-            var user_id = $(this).attr("data-userid");
-
-            
             PreloaderOn("#SongsCH1");
             $.get("/Playlists/LoadPlaylistDetails/" + plst_id + "/" + user_id, function (playlistData) {
                 $("#SongsCH1").html("");
                 $("#SongsCH1").html(playlistData);
             });
 
-
-            $(this).addClass("plstSelected");
-        });
+            $(sender).addClass("plstSelected");
+        }
         
 
     });

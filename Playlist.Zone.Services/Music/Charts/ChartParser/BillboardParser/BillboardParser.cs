@@ -36,46 +36,24 @@ namespace Playlist.Zone.Music.Charts.ChartParser.BillboardParser
             doc.LoadHtml(p_chartData);
 
 
-            IEnumerable<HtmlAgilityPack.HtmlNode> currNodeItems = doc.DocumentNode.SelectNodes("//*[contains(@class,'chart-list-item')]");
+            IEnumerable<HtmlAgilityPack.HtmlNode> currNodeItems = doc.DocumentNode.SelectNodes("//li[@class='chart-list__element display--flex']");
+            //"//*[contains(@class,'chart-list-item')]");
 
 
             string node_html = "";
             int charPosCounter = 1;
             foreach (var item in currNodeItems)
             {
-                string dataRank   = string.Empty;
-                string dataArtist = string.Empty;
-                string dataTitle = string.Empty;
-
-                if (item.Attributes["data-rank"] != null && item.Attributes["data-artist"] != null && item.Attributes["data-title"] != null)
-                {
-                    dataRank = item.Attributes["data-rank"].Value.ToString();
-                    dataArtist = item.Attributes["data-artist"].Value.ToString();
-                    dataTitle = item.Attributes["data-title"].Value.ToString();
-
-                    
-                    ChartSongDto _song = new ChartSongDto();
-                    _song.Name = dataTitle.Replace("\\n", "").Trim();
-                    _song.Artist = dataArtist.Replace("\\n", "").Trim();
-                    _song.Position = charPosCounter;
-
-
-                    chart.SongsList.Add(_song);
-                    chart.SongNum += 1;
-
-                    charPosCounter += 1;
-                }
-
-                /*node_html = item.InnerHtml;
+                node_html = item.InnerHtml;
 
                 HtmlAgilityPack.HtmlDocument itemNode = new HtmlAgilityPack.HtmlDocument();
                 itemNode.LoadHtml(node_html);
 
-                HtmlAgilityPack.HtmlNode currNodeSongName = itemNode.DocumentNode.SelectSingleNode("//*[contains(@class,'chart-row__song')]");
-                HtmlAgilityPack.HtmlNode currNodeArtistName = itemNode.DocumentNode.SelectSingleNode("//*[contains(@class,'chart-row__artist')]");
+                HtmlAgilityPack.HtmlNode currNodeSongName = itemNode.DocumentNode.SelectSingleNode("//span[@class='chart-element__information__song text--truncate color--primary']");
+                HtmlAgilityPack.HtmlNode currNodeArtistName = itemNode.DocumentNode.SelectSingleNode("//span[@class='chart-element__information__artist text--truncate color--secondary']");
 
 
-                ChartSongDto _song = new ChartSongDto();
+                AbstractChartSongDto _song = new ChartSongDto();
                 _song.Name = currNodeSongName.InnerText.Replace("\\n", "").Trim();
                 _song.Artist = currNodeArtistName.InnerText.Replace("\\n", "").Trim();
                 _song.Position = charPosCounter;
@@ -84,8 +62,7 @@ namespace Playlist.Zone.Music.Charts.ChartParser.BillboardParser
                 chart.SongsList.Add(_song);
                 chart.SongNum += 1;
 
-                charPosCounter += 1;*/
-
+                charPosCounter += 1;
 
             }
 

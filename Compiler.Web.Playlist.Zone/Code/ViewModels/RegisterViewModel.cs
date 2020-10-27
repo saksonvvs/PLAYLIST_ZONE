@@ -12,11 +12,12 @@ namespace Compiler.Web.Playlist.Zone.Code.ViewModels
     {
         public AbstractUserDto User { get; set; }
 
-
         public RegisterViewModel()
         {
             User = new UnknownUserDto();
         }
+
+
 
     }
 }

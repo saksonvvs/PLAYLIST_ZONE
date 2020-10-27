@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Compiler.Services.Logging;
 using Compiler.Web.Playlist.Zone.Code;
 using Compiler.Web.Playlist.Zone.Controllers.Controllers;
 using Microsoft.AspNetCore.Authorization;
@@ -29,7 +30,8 @@ namespace Compiler.Web.Playlist.Zone.Areas.Data.Controllers
         public PlaylistsController(
             IPlaylistEntity pPlaylistEntity,
             ISearchMusicService pYoutubeSearch,
-            ISongsEntity pPlaylistSongEntity )
+            ISongsEntity pPlaylistSongEntity,
+            ILogService pLogger):base(pLogger)
         {
             _playlistEntity = pPlaylistEntity;
             _youtubeSearch = pYoutubeSearch;

@@ -7,6 +7,7 @@ using Playlist.Zone.Services.Music.External;
 using Playlist.Zone.Dto.Music.SearchResult;
 using Compiler.Web.Playlist.Zone.Code;
 using Compiler.Interfaces.Common.Datatier.Tag;
+using Compiler.Services.Logging;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -21,7 +22,8 @@ namespace Compiler.Web.Playlist.Zone.Controllers.Controllers
 
         public SearchController(
             ITagEntity pTagEntity,
-            ISearchMusicService pYoutubeSearch)
+            ISearchMusicService pYoutubeSearch,
+            ILogService pLogger):base(pLogger)
         {
             _tagEntity = pTagEntity;
             _youtubeSearch = pYoutubeSearch;

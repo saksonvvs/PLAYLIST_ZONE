@@ -7,7 +7,7 @@
 <div class="row row-item" style="margin:0 0 0 0;">
     
 
-    <div class="col-md-3" style="padding:6px 3px 6px 6px;">
+    <div class="col-md-3 msc-plst-menu" style="padding:6px 3px 6px 6px;">
         <div class="myPlstsBtn"> My Playlists</div>
         <div class="popularPlstsBtn"> Popular Playlists</div>
         <div class="mostViewedPlstsBtn"> Most Viewed Playlists</div>
@@ -15,13 +15,13 @@
 
 
 
-    <div class="col-md-4" style="padding:6px 6px 6px 3px;">
+    <div class="col-md-4 msc-plst-MCH" style="padding:6px 6px 6px 3px;">
         <div id="PlaylistCH"></div>
     </div>
     
 
 
-    <div class="col-md-5" style="padding:6px 6px 6px 3px;">
+    <div class="col-md-5 msc-song-MCH" style="padding:6px 6px 6px 3px;">
         
         <div class="songCH">
             <div class="sng-Header">Songs</div>
@@ -85,6 +85,9 @@
             LoadMostViewedPlaylists();
         });
 
+
+        
+
     });
 
 
@@ -126,6 +129,7 @@
 
 
     function LoadPopularPlaylists() {
+
         PreloaderOn("#PlaylistCH");
         $.get("/Playlists/PopularPlaylists", function (data) {
             $("#SongsCH1").html("");
@@ -141,6 +145,21 @@
             $("#PlaylistCH").html(data);
         });
     }
+
+
+
+    /*
+    function ShrinkSongContent() {
+        $(".msc-plst-MCH").css("width", "100%");
+        $(".msc-song-MCH").css("display", "none");
+    }
+
+    function ExpandSongContent() {
+        alert("Expanding Song Content");
+
+        $(".msc-plst-MCH").css("width", "35%");
+        $(".msc-song-MCH").css("display", "35%");
+    }*/
     
 </script>
 

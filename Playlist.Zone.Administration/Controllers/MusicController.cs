@@ -82,7 +82,7 @@ namespace Playlist.Zone.Administration.Controllers
 
 
         //[Route("/Music/Generate/{pChartType}")]
-        public async Task<ActionResult> Generate(int Id) //pChartType)
+        public async Task<ActionResult> Generate(int Id)
         {
             Compiler.Common.Music.ChartType ChartType = (Compiler.Common.Music.ChartType)Id;
 
@@ -102,7 +102,6 @@ namespace Playlist.Zone.Administration.Controllers
             headers_list.Add(new KeyValuePair<string, string>("accept-language", "en-US,en;q=0.9"));
             headers_list.Add(new KeyValuePair<string, string>("cache-control", "max-age=0"));
             headers_list.Add(new KeyValuePair<string, string>("Proxy-Connection", "keep-alive"));
-
             //headers_list.Add(new KeyValuePair<string, string>("Host", "www.apple.com"));
 
 
@@ -154,7 +153,9 @@ namespace Playlist.Zone.Administration.Controllers
                         IChartParser ichartParser = new iTunesParser();
 
 
-                        currChart = await chartBuilderService.BuildChart("https://www.apple.com/itunes/charts/songs/", headers_list, ichartParser);
+                        //currChart = await chartBuilderService.BuildChart("https://www.apple.com/itunes/charts/songs/", headers_list, ichartParser);
+                        //
+                        currChart = await chartBuilderService.BuildChart("https://music.apple.com/us/playlist/top-100-usa/pl.606afcbb70264d2eb2b51d8dbcfa6a12", headers_list, ichartParser);
                     }
                     break;
                 case Compiler.Common.Music.ChartType.YouTube:

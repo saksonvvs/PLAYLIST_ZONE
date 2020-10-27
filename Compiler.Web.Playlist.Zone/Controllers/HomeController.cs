@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Compiler.Web.Playlist.Zone.Models;
 using Compiler.Web.Playlist.Zone.Code;
 using Microsoft.Extensions.Configuration;
+using Compiler.Services.Logging;
 
 namespace Compiler.Web.Playlist.Zone.Controllers
 {
@@ -14,7 +15,9 @@ namespace Compiler.Web.Playlist.Zone.Controllers
     {
         public IConfiguration _config;
 
-        public HomeController(IConfiguration pConfig)
+        public HomeController(
+            IConfiguration pConfig,
+            ILogService pLogger):base(pLogger)
         {
             _config = pConfig;
         }

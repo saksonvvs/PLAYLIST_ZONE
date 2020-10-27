@@ -9,6 +9,7 @@ using Playlist.Zone.Datatier.Music.Charts;
 using Playlist.Zone.Music.Charts;
 using Playlist.Zone.Dto.Music.Charts;
 using Playlist.Zone.Music.Charts.Dto;
+using Compiler.Services.Logging;
 
 namespace Compiler.Web.Playlist.Zone.Controllers.Controllers
 {
@@ -18,7 +19,9 @@ namespace Compiler.Web.Playlist.Zone.Controllers.Controllers
         
         protected readonly IChartEntity _chartManager;
 
-        public ChartsController(IChartEntity pChartManager)
+        public ChartsController(
+            IChartEntity pChartManager,
+            ILogService pLogger) : base(pLogger)
         {
             _chartManager = pChartManager;
         }

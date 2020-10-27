@@ -35,7 +35,7 @@ namespace Playlist.Zone.Services.Music.Charts.ChartParser.iTunesParser
             //<div class="section-conten-">
             //HtmlAgilityPack.HtmlNode fNode = doc.DocumentNode.SelectSingleNode("");
 
-            IEnumerable<HtmlAgilityPack.HtmlNode> currNodeItems = doc.DocumentNode.SelectNodes("//section[@class='section chart-grid']//li");
+            IEnumerable<HtmlAgilityPack.HtmlNode> currNodeItems = doc.DocumentNode.SelectNodes("//div[@class='col col-song']");
 
             string node_html = "";
             int charPosCounter = 1;
@@ -46,8 +46,8 @@ namespace Playlist.Zone.Services.Music.Charts.ChartParser.iTunesParser
                 HtmlAgilityPack.HtmlDocument itemNode = new HtmlAgilityPack.HtmlDocument();
                 itemNode.LoadHtml(node_html);
 
-                HtmlAgilityPack.HtmlNode currNodeSongName   = itemNode.DocumentNode.SelectSingleNode("//h3//a");
-                HtmlAgilityPack.HtmlNode currNodeArtistName = itemNode.DocumentNode.SelectSingleNode("//h4//a");
+                HtmlAgilityPack.HtmlNode currNodeSongName   = itemNode.DocumentNode.SelectSingleNode("//div[@class='song-name typography-label']");
+                HtmlAgilityPack.HtmlNode currNodeArtistName = itemNode.DocumentNode.SelectSingleNode("//div[@class='by-line typography-caption']");
 
 
                 AbstractChartSongDto _song = new ChartSongDto();

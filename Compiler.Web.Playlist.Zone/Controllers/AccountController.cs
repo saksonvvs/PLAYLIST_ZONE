@@ -17,6 +17,7 @@ using Playlist.Zone.Datatier.Music.Playlists;
 using Compiler.Web.Playlist.Zone.Models.Account;
 using Playlist.Zone.Dto.Music.Playlist;
 using Compiler.Abstractions.Dto.Common.Location;
+using Compiler.Services.Logging;
 
 namespace Compiler.Web.Playlist.Zone.Controllers.Controllers
 {
@@ -33,7 +34,8 @@ namespace Compiler.Web.Playlist.Zone.Controllers.Controllers
         public AccountController(
             IBaseSettings pBaseSettings,
             IUserEntity pUserEntity,
-            IPlaylistEntity pPlaylistEntity)
+            IPlaylistEntity pPlaylistEntity,
+            ILogService pLogger):base(pLogger)
         {
             _userEntity  = pUserEntity;
             _baseSettings = pBaseSettings;

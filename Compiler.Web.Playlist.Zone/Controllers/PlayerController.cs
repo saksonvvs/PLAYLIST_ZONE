@@ -12,6 +12,7 @@ using Playlist.Zone.Dto.Music.Charts;
 using Playlist.Zone.Dto.Music.Song;
 using Playlist.Zone.Music.Charts.Dto;
 using Playlist.Zone.Services.Music.External;
+using Compiler.Services.Logging;
 
 namespace Compiler.Web.Playlist.Zone.Controllers.Controllers
 {
@@ -32,7 +33,8 @@ namespace Compiler.Web.Playlist.Zone.Controllers.Controllers
             IChartEntity pChartManager, 
             IChartSongEntity pChartSongManager, 
             IPlaylistEntity pPlaylistManager,
-            ISearchMusicService pYoutubeSearch)
+            ISearchMusicService pYoutubeSearch,
+            ILogService pLogger) : base (pLogger)
         {
             _chartSongManager = pChartSongManager;
             _chartManager     = pChartManager;

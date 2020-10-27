@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Compiler.Services.Logging;
 using Compiler.Web.Playlist.Zone.Code;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -24,8 +25,9 @@ namespace Compiler.Web.Playlist.Zone.Areas.Data.Controllers
 
         public ChartsController(
             IChartEntity pChartManager,
-            IChartSongEntity pSongManager
-            )
+            IChartSongEntity pSongManager,
+            ILogService pLogger
+            ):base(pLogger)
         {
             _chartManager = pChartManager;
             _songManager = pSongManager;

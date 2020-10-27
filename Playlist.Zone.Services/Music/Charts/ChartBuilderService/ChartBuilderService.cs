@@ -86,6 +86,7 @@ namespace Playlist.Zone.Services.Music.Charts.ChartBuilderService
                     {
                         //loop and assign youtube ids
                         item.YouTubeId = await _youtubeSearch.SearchFirstByKeyword(item.Artist + "-" + item.Name);
+                        Task.Delay(100);
                     }
 
 

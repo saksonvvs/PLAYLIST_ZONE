@@ -12,6 +12,7 @@ using Playlist.Zone.Dto.Music.Playlist;
 using Playlist.Zone.Dto.Music.Song;
 using Playlist.Zone.Dto.Music.SearchResult;
 using Compiler.Interfaces.Common.Datatier.Tag;
+using Compiler.Services.Logging;
 
 namespace Compiler.Web.Playlist.Zone.Controllers.Controllers
 {
@@ -31,7 +32,8 @@ namespace Compiler.Web.Playlist.Zone.Controllers.Controllers
             IPlaylistEntity pPlaylistEntity, 
             ISearchMusicService pYoutubeSearch,
             ISongsEntity pPlaylistSongsEntity,
-            ITagEntity pTagEntity )
+            ITagEntity pTagEntity,
+            ILogService pLogger) : base(pLogger)
         {
             _playlistEntity = pPlaylistEntity;
             _youtubeSearch = pYoutubeSearch;
