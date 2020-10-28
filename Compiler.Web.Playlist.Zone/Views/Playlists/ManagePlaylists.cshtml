@@ -11,7 +11,7 @@
 
     @foreach (var item in Model)
     {
-        <div class="plst-Item isDef-@(item.IsDefault)" data-plstid="@item.Id">
+        <div class="plst-Item" data-plstid="@item.Id">
             <div style="float:left; width:85%;">@item.Name</div>
             <div class="plst-DelPlst">X</div>
             <div class="plst-EditPlst">E</div>
@@ -33,21 +33,30 @@
 
 
         $(".plst-Item").on("mouseover", function () {
-            $(this).css("background-color", "#dedede");
+            if ($(sender).hasClass("selected") == "plstSelected")
+                return;
 
-            $(this).children(".plst-DelPlst").css("background-color", "#CC0000");
+            $(sender).css("background-color", "#dedede");
+            $(sender).children(".plst-DelPlst").css("background-color", "#cdcdcd");
         });
 
 
         $(".plst-Item").on("mouseout", function () {
             $(this).css("background-color", "");
 
-            $(this).children(".plst-DelPlst").css("background-color", "#d87171");
+            $(sender).children(".plst-DelPlst").each(function () {
+                if ($(sender).hasClass("selected") != "plstSelected")
+                    $(sender).css("background-color", "#dedede")
+            });
         });
 
 
         $(".plst-Item").on("click", function () {
+            $(".plst-Item").removeClass("plstSelected");
+
             LoadPlaylistDetails($(this).attr("data-plstid"));
+
+            $(this).addClass("plstSelected");
         });
 
 
