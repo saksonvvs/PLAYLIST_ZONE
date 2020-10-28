@@ -27,6 +27,7 @@ namespace Compiler.Web.Playlist.Zone.Areas.Data.Controllers
         private readonly ISearchMusicService _youtubeSearch;
         private readonly ISongsEntity _playlistSongEntity;
 
+
         public PlaylistsController(
             IPlaylistEntity pPlaylistEntity,
             ISearchMusicService pYoutubeSearch,
@@ -76,7 +77,8 @@ namespace Compiler.Web.Playlist.Zone.Areas.Data.Controllers
         [Route("/Data/Playlists/DeleteSong/{pPlaylistId}/{pSongId}")]
         public async Task<IActionResult> DeleteSong(int pPlaylistId, int pSongId)
         {
-            if (pSongId <= 0) return BadRequest("Parameter Id is out of range");
+            if (pSongId <= 0) 
+                return BadRequest("Parameter Id is out of range");
 
             AbstractSongDto deleteSong;
             deleteSong = await _playlistSongEntity.GetById(pSongId);
@@ -180,7 +182,7 @@ namespace Compiler.Web.Playlist.Zone.Areas.Data.Controllers
                 song.Name = video.Name;
                 song.UserId = SessionManagement.GetSessionUserID(User);
 
-                int addid = await _playlistSongEntity.Add(song);
+                song.Id = await _playlistSongEntity.Add(song);
             }
 
             return Ok(song);

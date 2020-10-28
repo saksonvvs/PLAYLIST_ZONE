@@ -58,25 +58,25 @@
         <div class="row row-item" style="margin:15px 0 0 0; line-height:30px;">
             <div class="col-md-4">
                 <ul>
-                    <li><a class="plst-hm-item" href="/#tags">Country Playlists</a></li>
-                    <li><a class="plst-hm-item" href="/#tags">Hip Hop Playlists</a></li>
-                    <li><a class="plst-hm-item" href="/#tags">Pop Playlists</a></li>
+                    <li class="plst-hm-item"><a href="/#tags">Country Playlists</a></li>
+                    <li class="plst-hm-item"><a href="/#tags">Hip Hop Playlists</a></li>
+                    <li class="plst-hm-item"><a href="/#tags">Pop Playlists</a></li>
                 </ul>
             </div>
 
             <div class="col-md-4">
                 <ul>
-                    <li><a class="plst-hm-item" href="/#tags">Trending Now</a></li>
-                    <li><a class="plst-hm-item" href="/#tags">New Releases</a></li>
-                    <li><a class="plst-hm-item" href="/#tags">Seasonal</a></li>
+                    <li class="plst-hm-item"><a href="/#tags">Trending Now</a></li>
+                    <li class="plst-hm-item"><a href="/#tags">New Releases</a></li>
+                    <li class="plst-hm-item"><a href="/#tags">Seasonal</a></li>
                 </ul>
             </div>
 
             <div class="col-md-4">
                 <ul>
-                    <li><a class="plst-hm-item" href="/#tags">Top 20</a></li>
-                    <li><a class="plst-hm-item" href="/#tags">Top 30</a></li>
-                    <li><a class="plst-hm-item" href="/#tags">Top 40</a></li>
+                    <li class="plst-hm-item"><a href="/#tags">Top 20</a></li>
+                    <li class="plst-hm-item"><a href="/#tags">Top 30</a></li>
+                    <li class="plst-hm-item"><a href="/#tags">Top 40</a></li>
                 </ul>
             </div>
         </div>
@@ -118,14 +118,26 @@
             $(".home-row-2-ch").html(data);
         });
 
+
+        $(".plst-hm-item").on("click", function () {
+            PreloaderOn(".main-content");
+            $.get("/Tags/Index", function (data) {
+                $(".main-content").html(data);
+                PreloaderOff();
+            });
+        });
+
+
+        $(".plst-hm-item").on("mouseover", function () {
+            $(this).css("background-color", "#C8E3FA");
+        });
+
+        $(".plst-hm-item").on("mouseout", function () {
+            $(this).css("background-color", "#FFFFFF");
+        });
+
     });
 
-    $(".plst-hm-item").on("click", function () {
-        PreloaderOn(".main-content");
-        $.get("/Tags/Index", function (data) {
-            $(".main-content").html(data);
-            PreloaderOff();
-        });
-    });
+    
 
 </script>

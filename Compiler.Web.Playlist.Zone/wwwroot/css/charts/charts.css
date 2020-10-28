@@ -17,9 +17,11 @@ a:hover {
 }
 
 
-.plst-hm-item {
+
+
+
+.plst-hm-item a{
     margin: 5px 0 0 0;
-    background-color: #ffffff;
     color: #222222;
     cursor: pointer;
     border-radius: 3px;

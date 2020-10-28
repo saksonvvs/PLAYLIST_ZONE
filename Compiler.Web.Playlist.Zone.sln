@@ -11,9 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Playlist.Zone.Datatier", "P
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Playlist.Zone.Services", "Playlist.Zone.Services\Playlist.Zone.Services.csproj", "{87951435-CB75-4417-BC0E-9261A436D2AD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Playlist.Zone.Admin_DEL", "Playlist.Zone.Admin\Playlist.Zone.Admin_DEL.csproj", "{4A75B6B2-7E37-4B90-B6A0-D73309B7B84F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Playlist.Zone.Administration", "Playlist.Zone.Administration\Playlist.Zone.Administration.csproj", "{9FA0CBBB-A12D-4507-8EF9-591C20BE15A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Playlist.Zone.Administration", "Playlist.Zone.Administration\Playlist.Zone.Administration.csproj", "{9FA0CBBB-A12D-4507-8EF9-591C20BE15A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,10 +35,6 @@ Global
 		{87951435-CB75-4417-BC0E-9261A436D2AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87951435-CB75-4417-BC0E-9261A436D2AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87951435-CB75-4417-BC0E-9261A436D2AD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4A75B6B2-7E37-4B90-B6A0-D73309B7B84F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4A75B6B2-7E37-4B90-B6A0-D73309B7B84F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4A75B6B2-7E37-4B90-B6A0-D73309B7B84F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4A75B6B2-7E37-4B90-B6A0-D73309B7B84F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9FA0CBBB-A12D-4507-8EF9-591C20BE15A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9FA0CBBB-A12D-4507-8EF9-591C20BE15A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FA0CBBB-A12D-4507-8EF9-591C20BE15A5}.Release|Any CPU.ActiveCfg = Release|Any CPU

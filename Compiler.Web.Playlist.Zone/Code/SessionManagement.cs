@@ -15,7 +15,6 @@ namespace Compiler.Web.Playlist.Zone.Code
         {
             int ret_user_id = 0;
 
-            //----------------------------------------------------------
             var identity = (ClaimsIdentity)p_user.Identity;
             IEnumerable<Claim> claims = identity.Claims;
             foreach (var item in claims)
@@ -26,8 +25,7 @@ namespace Compiler.Web.Playlist.Zone.Code
                     break;
                 }
             }
-            //----------------------------------------------------------
-
+            
             return ret_user_id;
         }
 
@@ -39,8 +37,6 @@ namespace Compiler.Web.Playlist.Zone.Code
         {
             string ret_user_image = "noimage.png";
 
-
-            //----------------------------------------------------------
             var identity = (ClaimsIdentity)p_user.Identity;
             IEnumerable<Claim> claims = identity.Claims;
             foreach (var item in claims)
@@ -51,9 +47,7 @@ namespace Compiler.Web.Playlist.Zone.Code
                     break;
                 }
             }
-            //----------------------------------------------------------
-
-
+            
             return ret_user_image;
         }
 

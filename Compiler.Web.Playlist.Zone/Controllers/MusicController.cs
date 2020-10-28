@@ -13,7 +13,6 @@ namespace Compiler.Web.Playlist.Zone.Controllers.Controllers
     {
         public MusicController(ILogService pLogger) :base(pLogger)
         {
-
         }
 
 

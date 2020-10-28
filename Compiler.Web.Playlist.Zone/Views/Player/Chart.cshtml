@@ -15,6 +15,9 @@
         <div class="viewsNum">
             Views
         </div>
+        <div class="addSongPlstBtn">
+            Add +
+        </div>
     </div>
 
 
@@ -22,9 +25,9 @@
     <div class="pls-controller">
         @foreach (var item in Model.SongsList)
         {
-            <div class="plst-Itm" data-song="@item.YouTubeId" data-id="@item.Id">
-                @item.Artist - @item.Name
-            </div>
+        <div class="plst-Itm" data-song="@item.YouTubeId" data-id="@item.Id">
+            @item.Artist - @item.Name
+        </div>
         }
     </div>
 
@@ -40,10 +43,13 @@
             OnSongClick($(this));
         });
 
-    
         $(".addLike").on("click", function () {
             $.get("/Data/Charts/AddLike/@Model.Id", function (data) {
             });
+        });
+
+        $(".addSongPlstBtn").on("click", function () {
+            AddSongToPlaylist($(".plst-Itm-High-Back").attr("data-song"));
         });
 
 

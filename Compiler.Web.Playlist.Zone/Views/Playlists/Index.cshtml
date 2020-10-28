@@ -70,29 +70,22 @@
             $("#SongsCH1").css("overflow", "hidden");
         });
         
-
         $(".myPlstsBtn").on("click", function () {
             LoadMyPlaylists();
         });
-
 
         $(".popularPlstsBtn").on("click", function () {
             LoadPopularPlaylists();
         });
 
-
         $(".mostViewedPlstsBtn").on("click", function () {
             LoadMostViewedPlaylists();
         });
-
-
-        
 
     });
 
 
 
-    //----------------------------------------------------------------------------------------
     function LoadMyPlaylists() {
         PreloaderOn("#PlaylistCH");
 
@@ -103,12 +96,10 @@
             NotAuthorized();
         });
     }
-    //----------------------------------------------------------------------------------------
-
+    
 
 
     // load songs
-    //----------------------------------------------------------------------------------------
     function LoadPlaylistDetails(plst_id) {
 
         current_plst_id = plst_id;
@@ -125,7 +116,7 @@
             
         });
     }
-    //----------------------------------------------------------------------------------------
+    
 
 
     function LoadPopularPlaylists() {
@@ -148,8 +139,7 @@
 
 
 
-    /*
-    function ShrinkSongContent() {
+    /*function ShrinkSongContent() {
         $(".msc-plst-MCH").css("width", "100%");
         $(".msc-song-MCH").css("display", "none");
     }
@@ -164,11 +154,3 @@
 </script>
 
 
-
-
-
-
-
-
-@section scripts{
-}

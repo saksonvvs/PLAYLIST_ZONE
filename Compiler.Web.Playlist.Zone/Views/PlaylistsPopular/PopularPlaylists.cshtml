@@ -45,8 +45,6 @@
             PlaylistItemClick(this);
         });
 
-
-
         
         function PlaylistItemMouseOver(sender) {
             if ($(sender).hasClass("selected") == "plstSelected")
@@ -87,6 +85,8 @@
         }
         
 
+        //load 1st playlist
+        PlaylistItemClick($(".plst-Item").first());
     });
 
 </script>

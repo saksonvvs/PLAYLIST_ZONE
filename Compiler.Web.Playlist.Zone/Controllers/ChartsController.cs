@@ -30,7 +30,7 @@ namespace Compiler.Web.Playlist.Zone.Controllers.Controllers
 
         public async Task<IActionResult> Index()
         {
-            List<AbstractChartDto> chartList = new List<AbstractChartDto>();
+            List<AbstractChartDto> chartList;
             chartList = await _chartManager.GetRecent();
             return View(chartList);
         }

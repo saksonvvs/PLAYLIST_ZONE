@@ -182,19 +182,27 @@ function onYouTubeIframeAPIReady() {
         playerVars: { 'autoplay': 0, 'controls': 0 },
         events: {
             'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
+            'onStateChange': onPlayerStateChange,
+            'onError': onPlayerError
         }
     });
 }
 
 
+function onPlayerError(event) {
+    console.log('Error: ' + event.data);
+    playNextSong();
+}
+
 function onPlayerReady(event) {
     event.target.playVideo();
 }
 
-
 var done = false;
 function onPlayerStateChange(event) {
+
+    console.log("evt --> " + event.data);
+
     //console.log("event.data -->" + event.data);
     if (event.data == 0) {
         playNextSong();
@@ -367,9 +375,38 @@ function shufflePlaylist() {
 
 function OnSongClick(object) {
     playSong($(object).attr("data-id"), $(object).attr("data-song"));
-    $(".plst-Itm").css("background-color", "#dedede");
-    $(object).css("background-color", "#59caf1");
+
+
+    $(".plst-Itm").each(function () {
+        $(this).removeClass("plst-Itm-High-Back"); //.addClass("plst-Itm-Norm-Back");
+    });
+    
+
+    $(object).addClass("plst-Itm-High-Back");
+
+
+
+    //$(".plst-Itm").css("background-color", "#dedede");
+    //$(object).css("background-color", "#59caf1");
 }
 
+
+
+function AddSongToPlaylist(current_song_id) {
+
+    LightBoxOn();
+
+    $.get("/Playlists/AddSongToPlaylist/" + current_song_id, function (data) {
+        LightBoxContent(data);
+    })
+    .done(function () {
+    })
+    .fail(function () {
+        NotAuthorized();
+    })
+    .always(function () {
+    });
+
+}
 
 //----------------------------------------------------------------------------

@@ -62,7 +62,8 @@ namespace Compiler.Web.Playlist.Zone.Controllers.Controllers
         [HttpGet]
         public async Task<IActionResult> Rename(int id)
         {
-            AbstractPlaylistDto playlist = await _playlistEntity.GetById(id);
+            AbstractPlaylistDto playlist;
+            playlist = await _playlistEntity.GetById(id);
             return View(playlist);
         }
 
@@ -72,7 +73,8 @@ namespace Compiler.Web.Playlist.Zone.Controllers.Controllers
         [Route("/Playlists/AddSong/{playlist_id}")]
         public IActionResult AddSong(int playlist_id)
         {
-            if (playlist_id <= 0) return View(-1);
+            if (playlist_id <= 0) 
+                return View(-1);
 
             return View(playlist_id);
         }
@@ -86,7 +88,7 @@ namespace Compiler.Web.Playlist.Zone.Controllers.Controllers
         {
             ViewBag.SongGuid = song_guid;
 
-            List<AbstractPlaylistDto> userPlaylists = new List<AbstractPlaylistDto>();
+            List<AbstractPlaylistDto> userPlaylists;
             userPlaylists = await _playlistEntity.GetAllUserPlaylists(SessionManagement.GetSessionUserID(User));
 
             return View(userPlaylists);
@@ -98,7 +100,7 @@ namespace Compiler.Web.Playlist.Zone.Controllers.Controllers
         [Route("/Playlists/ManagePlaylists")]
         public async Task<ActionResult> ManagePlaylists()
         {
-            List<AbstractPlaylistDto> retObj = new List<AbstractPlaylistDto>();
+            List<AbstractPlaylistDto> retObj;
             retObj = await _playlistEntity.GetAllUserPlaylists(SessionManagement.GetSessionUserID(User));
             return View(retObj);
         }

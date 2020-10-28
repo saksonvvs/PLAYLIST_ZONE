@@ -16,7 +16,6 @@ namespace Compiler.Web.Playlist.Zone.Controllers
     [CustomExceptionFilter]
     public class TagsController : BaseController
     {
-
         public readonly ITagEntity _tagEntity;
         public readonly IPlaylistEntity _playlistEntity;
 
@@ -34,7 +33,7 @@ namespace Compiler.Web.Playlist.Zone.Controllers
 
         public async Task<IActionResult> Index()
         {
-            List<AbstractTagDto> tags_list = new List<AbstractTagDto>();
+            List<AbstractTagDto> tags_list;
             tags_list = await _tagEntity.GetRandomTags();
             return View(tags_list);
         }

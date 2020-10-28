@@ -6,7 +6,6 @@
 
 
 <div style="float:left; width:100%;">
-
     <div class="plst-det-header">&nbsp;@Model.Name</div>
     <div id="PlayPlaylistBtn" data-attr-plst="@Model.Id" style="width:100%;"> > Play Playlist</div>
 
@@ -25,7 +24,11 @@
 
 <script>
     $(document).ready(function () {
-        
+
+        $(".plst-SongItem").off("mouseover", "**");
+        $(".plst-SongItem").off("mouseout", "**");
+        $(".plst-SongItem").off("click", "**");
+
         $(".plst-SongItem").on("mouseover", function () {
             $(this).css("background-color", "#dedede");
         });

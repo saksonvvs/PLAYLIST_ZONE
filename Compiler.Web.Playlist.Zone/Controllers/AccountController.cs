@@ -51,30 +51,9 @@ namespace Compiler.Web.Playlist.Zone.Controllers.Controllers
         {
             AbstractUserDto currUserInfo = new UserDto();
 
-
-            //admin check
-            //-----------------------------------------------------------------
             bool isAdmin = User.HasClaim(ClaimTypes.Role, "Admin");
             bool IsAuthenticated = User.Identity.IsAuthenticated;
-            string user_Name = User.Identity.Name;
-            //-----------------------------------------------------------------
-
-
-            //-----------------------------------------------------------------
-            if (isAdmin) ViewData["isAdmin"] = "1";
-            //-----------------------------------------------------------------
-
-
-            //-----------------------------------------------------------------
-            currUserInfo = await _userEntity.GetByUsername(user_Name);
-            //-----------------------------------------------------------------
-
-
-            // need to complete
-            int sessionUserID = SessionManagement.GetSessionUserID(User);
-            ViewData["sessionUserID"] = sessionUserID.ToString();
-
-
+            currUserInfo = await _userEntity.GetByUsername(User.Identity.Name);
             return View(nameof(Info), currUserInfo);
         }
 
@@ -84,21 +63,14 @@ namespace Compiler.Web.Playlist.Zone.Controllers.Controllers
         {   
             AbstractUserDto currUserInfo = new UserDto();
 
-
-            //admin check
-            //-----------------------------------------------------------------
             bool isAdmin         = User.HasClaim(ClaimTypes.Role, "Admin");
             bool IsAuthenticated = User.Identity.IsAuthenticated;
-            string user_Name     = User.Identity.Name;
-            //-----------------------------------------------------------------
-
-
-            if (isAdmin) ViewData["isAdmin"] = "1";
-            
-            currUserInfo = await _userEntity.GetByUsername(user_Name);
-            
+            currUserInfo = await _userEntity.GetByUsername(User.Identity.Name);
             return View(currUserInfo);
         }
+
+
+
 
         [Route("/Account/User/Stats")]
         public async Task<IActionResult> Stats()
@@ -169,10 +141,10 @@ namespace Compiler.Web.Playlist.Zone.Controllers.Controllers
             
 
 
-
-
             
-            if (checkUser.Username == username && checkUser.Password == password && checkUser.IsActive == 1)
+            if (checkUser.Username == username && 
+                checkUser.Password == password && 
+                checkUser.IsActive == 1)
             {
                 var userIdentity = new ClaimsIdentity("Identity");
                 userIdentity.Label = "Identity";
@@ -200,18 +172,6 @@ namespace Compiler.Web.Playlist.Zone.Controllers.Controllers
             }
             
 
-
-
-
-            //------------------------------------------------------------------------------
-            //_logger.LogInformation(10001, "User Login: User Details: " + username);
-            //_signInManager.SignInAsync(appUs, isPersistent: false);   
-            //_logger.LogInformation(3, "User logged in.");
-            //_authz.AuthorizeAsync(User, "Admin");
-            //------------------------------------------------------------------------------
-            
-            
-
             return RedirectPermanent("/");
         }
         
@@ -229,7 +189,6 @@ namespace Compiler.Web.Playlist.Zone.Controllers.Controllers
         public IActionResult Register()
         {
             RegisterViewModel model = new RegisterViewModel();
-           
             return View(model);
         }
         
@@ -281,8 +240,7 @@ namespace Compiler.Web.Playlist.Zone.Controllers.Controllers
 
                 
                 //need to send confirmation email
-                // EmailService
-
+                //EmailService
 
 
                 if (new_user_id > 0)
@@ -292,11 +250,9 @@ namespace Compiler.Web.Playlist.Zone.Controllers.Controllers
                 else
                 {
                     string user_object_to_log = JsonConvert.SerializeObject(model);
-                    //_logger.LogInformation(10001, "Error during registration: User Details: " + user_object_to_log);
+                    _logger.LogMessage("10001", "Register",  "Error during registration: User Details: " + user_object_to_log);
                     return View("RegisterProblem");
                 }
-
-
             }
             
 
