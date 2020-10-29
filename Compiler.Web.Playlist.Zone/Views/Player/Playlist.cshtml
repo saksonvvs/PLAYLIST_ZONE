@@ -5,19 +5,17 @@
 }
 
 
-<div style="float:left; width:100%; height:100%;">
 
+<div class="plr-ch">
 
-
-    <div style="float:left; width:100%; height:10%;">
-        <div class="addLikeBtn" style="float:left; width:45%; margin:0px 0 0 2%; padding:2px 2% 2px 2%; text-align:center; background-color:#3077be; color:#FFF; border-radius:4px; cursor:pointer;">
-            @Model.LikeNum Likes 
+    <div class="plst-controls">
+        <div class="addLike">
+            @Model.LikeNum Likes
         </div>
-        <div class="viewsNumBtn" style="float:left; width:45%; margin:0px 0 0 2%; padding:2px 2% 2px 2%; text-align:center; background-color:#3077be; color:#FFF; border-radius:4px; cursor:pointer;">
+        <div class="viewsNum">
             @Model.ViewNum Views
         </div>
     </div>
-
 
 
     <div class="pls-controller">
@@ -29,11 +27,7 @@
         }
     </div>
 
-
 </div>
-
-
-
 
 
 
@@ -47,34 +41,14 @@
             OnSongClick($(this));
         });
 
-
-        $(".addLikeBtn").on("click", function () {
+        $(".addLike").on("click", function () {
             $.get("/Data/Playlists/AddLike/@Model.Id", function (data) {
                 $(".addLikeBtn").html(data + " Likes");
             });
         });
 
-
-        $(".viewsNumBtn").on("click", function () {
-        });
-
-
         OnSongClick($(".plst-Itm").first());
 
-});
-
-
-
-
-
+    });
 
 </script>
-
-
-
-
-
-
-@section Scripts
-{   
-}

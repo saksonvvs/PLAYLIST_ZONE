@@ -50,9 +50,6 @@ namespace Compiler.Web.Playlist.Zone.Controllers.Controllers
         public async Task<IActionResult> Index()
         {
             AbstractUserDto currUserInfo = new UserDto();
-
-            bool isAdmin = User.HasClaim(ClaimTypes.Role, "Admin");
-            bool IsAuthenticated = User.Identity.IsAuthenticated;
             currUserInfo = await _userEntity.GetByUsername(User.Identity.Name);
             return View(nameof(Info), currUserInfo);
         }
@@ -62,9 +59,6 @@ namespace Compiler.Web.Playlist.Zone.Controllers.Controllers
         public async Task<IActionResult> Info()
         {   
             AbstractUserDto currUserInfo = new UserDto();
-
-            bool isAdmin         = User.HasClaim(ClaimTypes.Role, "Admin");
-            bool IsAuthenticated = User.Identity.IsAuthenticated;
             currUserInfo = await _userEntity.GetByUsername(User.Identity.Name);
             return View(currUserInfo);
         }
@@ -76,18 +70,9 @@ namespace Compiler.Web.Playlist.Zone.Controllers.Controllers
         public async Task<IActionResult> Stats()
         {
             StatsViewModel model = new StatsViewModel();
-
-            IEnumerable<AbstractPlaylistDto> playlistResult = await _playlistEntity.GetAllUserPlaylists(SessionManagement.GetSessionUserID(User));
-
-            model.playlists = playlistResult.ToList();
-
+            model.playlists = await _playlistEntity.GetAllUserPlaylists(SessionState.GetCurrUserID(User));
             return View(model);
         }
-
-
-
-
-
 
 
 
@@ -96,8 +81,6 @@ namespace Compiler.Web.Playlist.Zone.Controllers.Controllers
             await HttpContext.SignOutAsync();
             return RedirectPermanent("/Account/Login");
         }
-
-
 
 
 
@@ -199,64 +182,60 @@ namespace Compiler.Web.Playlist.Zone.Controllers.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
-            int new_user_id = 0;
+            if (!ModelState.IsValid)
+                return View(model);
 
-            
-            if (ModelState.IsValid)
+
+            //need to add password hasher
+            // need to make all validations
+            // if pass is the same 
+            // user not registered yet
+            // .....
+
+
+            AbstractUserDto checkUser;
+            checkUser = await _userEntity.GetByUsername(model.User.Username);
+            if(checkUser != null && checkUser.Id > 0)
             {
-                //need to add password hasher
-                // need to make all validations
-                // if pass is the same 
-                // user not registered yet
-                // .....
+                ModelState.AddModelError("error", "Looks like user already exist. Please choose different username.");
+                return View(model);
+            }
 
-                AbstractUserDto checkUser;
-                checkUser = await _userEntity.GetByUsername(model.User.Username);
-                if(checkUser != null && checkUser.Id > 0)
-                {
-                    ModelState.AddModelError("error", "Looks like user already exist. Please choose different username.");
-                    return View(model);
-                }
-
-                checkUser = await _userEntity.GetByEmail(model.User.Email);
-                if (checkUser != null && checkUser.Id > 0)
-                {
-                    ModelState.AddModelError("error", "Looks like user already exist. Please choose different email.");
-                    return View(model);
-                }
+            checkUser = await _userEntity.GetByEmail(model.User.Email);
+            if (checkUser != null && checkUser.Id > 0)
+            {
+                ModelState.AddModelError("error", "Looks like user already exist. Please choose different email.");
+                return View(model);
+            }
 
                 
-                model.User.IsActive = 1;
-                model.User.IsConfirmed = 0;
-                model.User.IsAdmin = 0;
-                model.User.MembershipLevel = 1;
-                model.User.RegistrationDate = DateTime.Now;
-                model.User.Image = "noimage.png";
-                model.User.LastLoginLocation = "";
-                model.User.Address = new UnknownAddressDto();
+            model.User.IsActive = 1;
+            model.User.IsConfirmed = 0;
+            model.User.IsAdmin = 0;
+            model.User.MembershipLevel = 1;
+            model.User.RegistrationDate = DateTime.Now;
+            model.User.Image = "noimage.png";
+            model.User.LastLoginLocation = "";
+            model.User.Address = new UnknownAddressDto();
 
-                new_user_id = await _userEntity.Add(model.User);
-
-
-                
-                //need to send confirmation email
-                //EmailService
+            int new_user_id = await _userEntity.Add(model.User);
 
 
-                if (new_user_id > 0)
-                {
-                    return View("RegisterThanks");
-                }
-                else
-                {
-                    string user_object_to_log = JsonConvert.SerializeObject(model);
-                    _logger.LogMessage("10001", "Register",  "Error during registration: User Details: " + user_object_to_log);
-                    return View("RegisterProblem");
-                }
+            //need to send confirmation email
+            //EmailService
+
+
+            if (new_user_id > 0)
+            {
+                return View("RegisterThanks");
+            }
+            else
+            {
+                string user_object_to_log = JsonConvert.SerializeObject(model);
+                _logger.LogMessage("10001", "Register",  "Error during registration: User Details: " + user_object_to_log);
+                return View("RegisterProblem");
             }
             
-
-            return View(model);
         }
 
 

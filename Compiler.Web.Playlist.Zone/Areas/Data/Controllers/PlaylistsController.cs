@@ -54,7 +54,7 @@ namespace Compiler.Web.Playlist.Zone.Areas.Data.Controllers
         public async Task<JsonResult> MyPlaylists()
         {
             List<AbstractPlaylistDto> retObj = new List<AbstractPlaylistDto>();
-            retObj = await _playlistEntity.GetAllUserPlaylists(SessionManagement.GetSessionUserID(User));
+            retObj = await _playlistEntity.GetAllUserPlaylists(SessionState.GetCurrUserID(User));
             return Json(retObj);
         }
 
@@ -67,7 +67,7 @@ namespace Compiler.Web.Playlist.Zone.Areas.Data.Controllers
                 return BadRequest();
 
             List<AbstractSongDto> retObj = new List<AbstractSongDto>();
-            retObj = await _playlistSongEntity.GetAllPlaylistSongs(SessionManagement.GetSessionUserID(User), pPlaylistId);
+            retObj = await _playlistSongEntity.GetAllPlaylistSongs(SessionState.GetCurrUserID(User), pPlaylistId);
             return Ok(retObj);
         }
 
@@ -83,7 +83,7 @@ namespace Compiler.Web.Playlist.Zone.Areas.Data.Controllers
             AbstractSongDto deleteSong;
             deleteSong = await _playlistSongEntity.GetById(pSongId);
 
-            if (deleteSong.UserId != SessionManagement.GetSessionUserID(User))
+            if (deleteSong.UserId != SessionState.GetCurrUserID(User))
                 return BadRequest();
 
             deleteSong.Id = pSongId;
@@ -121,7 +121,7 @@ namespace Compiler.Web.Playlist.Zone.Areas.Data.Controllers
             AbstractPlaylistDto playlist = new PlaylistDto();
             playlist.Name = pPlaylistName;
             playlist.DteCreated = DateTime.Now;
-            playlist.UserId = SessionManagement.GetSessionUserID(User);
+            playlist.UserId = SessionState.GetCurrUserID(User);
             playlist.Id = await _playlistEntity.Add(playlist);
 
             return Ok(playlist);
@@ -144,7 +144,7 @@ namespace Compiler.Web.Playlist.Zone.Areas.Data.Controllers
             playlist = await _playlistEntity.GetById(Id);
 
 
-            if (playlist.UserId != SessionManagement.GetSessionUserID(User)) 
+            if (playlist.UserId != SessionState.GetCurrUserID(User)) 
                 return BadRequest();
 
 
@@ -180,7 +180,7 @@ namespace Compiler.Web.Playlist.Zone.Areas.Data.Controllers
                 song.PlaylistId = pPlaylistId;
                 song.Artist = video.Artist;
                 song.Name = video.Name;
-                song.UserId = SessionManagement.GetSessionUserID(User);
+                song.UserId = SessionState.GetCurrUserID(User);
 
                 song.Id = await _playlistSongEntity.Add(song);
             }
@@ -194,7 +194,7 @@ namespace Compiler.Web.Playlist.Zone.Areas.Data.Controllers
         [Route("/Data/Playlists/MakeDefault/{pId}")]
         public async Task<IActionResult> MakeDefault(int pId)
         {
-            await _playlistEntity.SetDefaultPlaylist(SessionManagement.GetSessionUserID(User), pId);
+            await _playlistEntity.SetDefaultPlaylist(SessionState.GetCurrUserID(User), pId);
             return Ok("");
         }
 

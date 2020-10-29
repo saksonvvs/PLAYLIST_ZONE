@@ -89,7 +89,7 @@ namespace Compiler.Web.Playlist.Zone.Controllers.Controllers
             ViewBag.SongGuid = song_guid;
 
             List<AbstractPlaylistDto> userPlaylists;
-            userPlaylists = await _playlistEntity.GetAllUserPlaylists(SessionManagement.GetSessionUserID(User));
+            userPlaylists = await _playlistEntity.GetAllUserPlaylists(SessionState.GetCurrUserID(User));
 
             return View(userPlaylists);
         }
@@ -101,7 +101,7 @@ namespace Compiler.Web.Playlist.Zone.Controllers.Controllers
         public async Task<ActionResult> ManagePlaylists()
         {
             List<AbstractPlaylistDto> retObj;
-            retObj = await _playlistEntity.GetAllUserPlaylists(SessionManagement.GetSessionUserID(User));
+            retObj = await _playlistEntity.GetAllUserPlaylists(SessionState.GetCurrUserID(User));
             return View(retObj);
         }
 

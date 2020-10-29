@@ -53,22 +53,25 @@ namespace Compiler.Web.Playlist.Zone.Controllers
         [Route("/Tags/Add/{playlist_id}")]
         public async Task<IActionResult> Add(int playlist_id, string tag_name)
         {
-            if (playlist_id <= 0) return ErrorProblem();
-            if (String.IsNullOrEmpty(tag_name)) return ErrorProblem();
+            if (playlist_id <= 0) 
+                return ErrorProblem();
+
+            if (String.IsNullOrEmpty(tag_name)) 
+                return ErrorProblem();
 
 
             AbstractTagDto tagAdd = new TagDto();
             tagAdd.Name = tag_name;
+            tagAdd.OwnerId = playlist_id;
+
 
             AbstractTagDto checkTag = await _tagEntity.GetByName(tag_name);
+
 
             if (checkTag.Id > 0)
                 tagAdd = checkTag;
             else
                 tagAdd.Id = await _tagEntity.Add(tagAdd);
-
-
-            tagAdd.OwnerId = playlist_id;
 
             await _playlistEntity.AddTag(tagAdd);
 

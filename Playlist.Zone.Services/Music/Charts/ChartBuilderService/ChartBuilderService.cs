@@ -113,22 +113,14 @@ namespace Playlist.Zone.Services.Music.Charts.ChartBuilderService
         {
             AbstractChartDto retChart = new ChartDto();
 
-
             if (p_chartUrl == null || p_chartUrl == "")
-            {
                 throw (new ArgumentException("Missing chart url"));
-            }
 
             if (p_chartHeaders == null)
-            {
                 throw (new ArgumentException("Missing chart request headers"));
-            }
 
             if (p_chartParser == null)
-            {
                 throw (new ArgumentException("Missing chart parser"));
-            }
-
 
 
 
@@ -136,7 +128,6 @@ namespace Playlist.Zone.Services.Music.Charts.ChartBuilderService
             {
                 try
                 {
-
                     foreach (var item in p_chartHeaders)
                     {
                         client.DefaultRequestHeaders.Add(item.Key, item.Value);
@@ -159,13 +150,11 @@ namespace Playlist.Zone.Services.Music.Charts.ChartBuilderService
                     }
 
 
-
                     if (retChart.SongNum > 0)
                     {
                         // save chart to data storage
                         _dbChartManager.Add(retChart);
                     }
-
 
                 }
                 catch (HttpRequestException ex)
