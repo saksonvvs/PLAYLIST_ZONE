@@ -127,6 +127,8 @@
 
             $.get("/Tags/Add/@(ViewBag.PlaylistId)?tag_name=" + $("#newTagVal").val(), function (data) {
                 $(".tags-ch").prepend("<div class='plst-TagItem' >" + $("#newTagVal").val() + "</div>");
+
+                $("#newTagVal").val("");
             });
         });
         

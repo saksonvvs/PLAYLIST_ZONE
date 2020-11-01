@@ -61,17 +61,18 @@ namespace Compiler.Web.Playlist.Zone.Controllers
             if (String.IsNullOrEmpty(tag_name)) 
                 return ErrorProblem();
 
+            AbstractTagDto checkTag = await _tagEntity.GetByName(tag_name);
 
             AbstractTagDto tagAdd = new TagDto();
             tagAdd.Name = tag_name;
             tagAdd.OwnerId = playlist_id;
 
 
-            AbstractTagDto checkTag = await _tagEntity.GetByName(tag_name);
-
-
             if (checkTag.Id > 0)
+            {
                 tagAdd = checkTag;
+                tagAdd.OwnerId = playlist_id;
+            }
             else
                 tagAdd.Id = await _tagEntity.Add(tagAdd);
 

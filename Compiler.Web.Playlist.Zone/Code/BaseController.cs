@@ -19,10 +19,7 @@ namespace Compiler.Web.Playlist.Zone.Code
         }
 
 
-        //
-        // need to intercept Exception Globbaly
-        //
-
+        
 
         public IActionResult ErrorProblem()
         {

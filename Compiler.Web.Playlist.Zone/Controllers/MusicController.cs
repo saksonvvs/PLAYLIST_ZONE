@@ -15,7 +15,6 @@ namespace Compiler.Web.Playlist.Zone.Controllers.Controllers
         {
         }
 
-
         public IActionResult Index()
         {
             return View();

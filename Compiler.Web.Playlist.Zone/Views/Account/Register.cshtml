@@ -23,61 +23,46 @@
         @Html.AntiForgeryToken()
 
 
-        <div style="float:left; width:100%; padding:0 10px 10px 10px;">
-
-
-            <div style="float:left; width:100%;">
-                <div style="float:left; width:100%; font-weight:bold; margin:7px 0 0 0;">Name:</div>
-                <input asp-for="@Model.User.FirstName" placeholder="First name" style="width:49%; margin:0 1% 1% 0; height:30px; line-height:30px; border-radius:3px; padding:0 4px 0 4px; border:1px solid #989898;" />
-                <input asp-for="@Model.User.LastName" placeholder="Last name" style="width:49%; margin:0 1% 1% 0; height:30px; line-height:30px; border-radius:3px; padding:0 4px 0 4px; border:1px solid #989898;" />
-            </div>
-
-
-
-            <div style="float:left; width:100%;">
-
-                <div style="float:left; width:100%; font-weight:bold; margin:7px 0 0 0;">Login:</div>
-
-                <div style="float:left; width:100%; padding:2px;">
-                    <input asp-for="@Model.User.Username" placeholder="Username" style="width:47%; margin:0 1% 0 0; height:30px; line-height:30px; border-radius:3px; padding:0 4px 0 4px; border:1px solid #989898;" />
+            <div class="cont-100">
+                <div class="lgn-cnt-itm">Name:</div>
+                
+                <div class="lgn-cnt-itm">
+                    <input asp-for="@Model.User.FirstName" placeholder="First name" class="txt-reg-fname" />
                 </div>
 
-                <div style="float:left; width:100%; padding:2px;">
-                    <input asp-for="@Model.User.Password" type="password" placeholder="Password" style="width:25%; margin:0 1% 0 0; height:30px; line-height:30px; border-radius:3px; padding:0 4px 0 4px; border:1px solid #989898;" />
-
-                    <input id="repPass" name="repPass" type="password" placeholder="Repeat password" style="width:25%; margin:0 1% 0 0; height:30px; line-height:30px; border-radius:3px; padding:0 4px 0 4px; border:1px solid #989898;" />
+                <div class="lgn-cnt-itm">
+                    <input asp-for="@Model.User.LastName" placeholder="Last name" class="txt-reg-lname" />
                 </div>
-
             </div>
 
+            <div class="cont-100">
+                <div class="lgn-cnt-itm">Login:</div>
 
+                <div class="lgn-cnt-itm">
+                    <input asp-for="@Model.User.Username" placeholder="Username" class="txt-reg-username" />
+                </div>
 
-
-
-
-            <div style="float:left; width:100%;">
-
-                <div style="float:left; width:100%; font-weight:bold; margin:7px 0 0 0;">Details:</div>
-
-                <div style="float:left; width:100%; padding:2px;">
-                    <input asp-for="@Model.User.Email" placeholder="Email" style="width:33%; margin:0 1% 0 0; height:30px; line-height:30px; border-radius:3px; padding:0 4px 0 4px; border:1px solid #989898;" />
+                <div class="lgn-cnt-itm">
+                    <input asp-for="@Model.User.Password" type="password" placeholder="Password" class="txt-reg-pass" />
+                    <input id="repPass" name="repPass" type="password" placeholder="Repeat password" class="txt-reg-rep-pass" />
                 </div>
 
             </div>
 
 
+            <div class="cont-100">
+                <div class="lgn-cnt-itm">Details:</div>
 
-
-
-
-            <div style="float:left; width:100%;">
-                <div asp-validation-summary="All" style="float:left; width:100%; color:#CC0000;"></div>
-
-                <input type="submit" value="Register" style="float:right; background-color:#076ba6; border:none; border-radius:3px; color:#FFFFFF; padding:3px 60px 3px 60px;" />
+                <div class="lgn-cnt-itm">
+                    <input asp-for="@Model.User.Email" placeholder="Email" class="txt-reg-email" />
+                </div>
             </div>
 
-        </div>
 
+            <div class="cont-100">
+                <div asp-validation-summary="All" class="lgn-cnt-itm vld-result"></div>
+                <input type="submit" value="Register" class="btn-register" />
+            </div>
 
 
     </form>

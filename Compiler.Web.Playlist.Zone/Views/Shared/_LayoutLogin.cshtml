@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="~/css/account/account.css?cb=@Compiler.Web.Playlist.Zone.Code.PlaylistRoot.CacheControl" />
+        <link rel="stylesheet" href="~/css/shared/shared.css?cb=@Compiler.Web.Playlist.Zone.Code.PlaylistRoot.CacheControl" />
 
         <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
     </environment>
@@ -18,6 +19,7 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
         <link rel="stylesheet" href="~/css/account/account.css?cb=@Compiler.Web.Playlist.Zone.Code.PlaylistRoot.CacheControl" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/shared/shared.css?cb=@Compiler.Web.Playlist.Zone.Code.PlaylistRoot.CacheControl" />
 
         <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
     </environment>
@@ -44,7 +46,9 @@
                     <li><a href="/#playlists">Playlists</a></li>
                 </ul>
                 <div style="float:right; margin:23px 0 0 0;">
-                    <a href="/Account/Login" style="color:#ffffff; cursor:pointer;">Login</a>
+                    <a class="mmLogin" href="/Account/Login">Login</a>
+                    <a class="mmSep">|</a>
+                    <a class="mmRegister" href="/Account/Register">Register</a>
                 </div>
             </div>
         </div>

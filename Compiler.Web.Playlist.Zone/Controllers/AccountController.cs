@@ -64,6 +64,27 @@ namespace Compiler.Web.Playlist.Zone.Controllers.Controllers
         }
 
 
+        [HttpPost]
+        public async Task<IActionResult> Info(UserDto model)
+        {
+            AbstractUserDto currUserInfo = new UserDto();
+            currUserInfo = await _userEntity.GetByUsername(User.Identity.Name);
+
+            currUserInfo.FirstName = model.FirstName;
+            currUserInfo.LastName = model.LastName;
+
+            ModelState.Clear();
+            TryValidateModel(currUserInfo);
+
+            if (!ModelState.IsValid)
+                return View(model);
+
+            await _userEntity.Update(currUserInfo);
+
+            return Redirect("/#account");
+        }
+
+
 
 
         [Route("/Account/User/Stats")]
