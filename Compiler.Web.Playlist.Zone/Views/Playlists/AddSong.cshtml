@@ -48,19 +48,21 @@
                 $("#ssSongItm").off();
                 $("#SearchResultsCH1").empty();
                 $("#SearchResultsCH1").css("height", "320px");
+
                 
                 for (var i = 0; i < data.songsList.length; i++)
                 {
-                    var songImgStr = "<img alt='' src='//i.ytimg.com/vi/" + data[i].youTubeId +"/mqdefault.jpg' />";
-                    var songTitleStr = "<div>" + data[i].artist +"</div>";
+                    var songImgStr = "<img alt='' src='//i.ytimg.com/vi/" + data.songsList[i].youTubeId +"/mqdefault.jpg' />";
+                    var songTitleStr = "<div>" + data.songsList[i].artist + "</div>";
 
-                    $("#SearchResultsCH1").append("<div class='ssSongItm' data-songid='" + data[i].youTubeId + "' >"+ songImgStr + songTitleStr +"</div>");
+                    $("#SearchResultsCH1").append("<div class='ssSongItm' data-songid='" + data.songsList[i].youTubeId + "' >"+ songImgStr + songTitleStr +"</div>");
                 }
 
 
                 $(".ssSongItm").on("click", function () {
                     $.post("/Data/Playlists/AddSong/@Model/" + $(this).attr("data-songid"), function (data) {
                         LoadPlaylistDetails(data.playlistId);
+                        LightBoxOff();
                     });
                 });
                 

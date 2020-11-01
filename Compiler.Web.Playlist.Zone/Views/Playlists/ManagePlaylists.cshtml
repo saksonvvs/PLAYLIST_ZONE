@@ -35,21 +35,21 @@
 
 
         $(".plst-Item").on("mouseover", function () {
-            if ($(sender).hasClass("selected") == "plstSelected")
+            if ($(this).hasClass("selected") == "plstSelected")
                 return;
 
-            $(sender).css("background-color", "#dedede");
-            $(sender).children(".plst-DelPlst").css("background-color", "#cdcdcd");
+            $(this).css("background-color", "#dedede");
+            //$(this).children(".plst-DelPlst").css("background-color", "#cdcdcd");
         });
 
 
         $(".plst-Item").on("mouseout", function () {
             $(this).css("background-color", "");
 
-            $(sender).children(".plst-DelPlst").each(function () {
-                if ($(sender).hasClass("selected") != "plstSelected")
-                    $(sender).css("background-color", "#dedede")
-            });
+            /*$(this).children(".plst-DelPlst").each(function () {
+                if ($(this).hasClass("selected") != "plstSelected")
+                    $(this).css("background-color", "#dedede")
+            });*/
         });
 
 
