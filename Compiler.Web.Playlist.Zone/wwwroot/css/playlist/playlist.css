@@ -1,8 +1,33 @@
 ﻿
-/* INDEX */
 
+.eyeIcn {
+    display: inline-block;
+    background-image: url(/images/eye_icn.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+    margin-top:1px;
+}
+
+.viewIcn {
+    display: inline-block;
+    background-image: url(/images/hrt_icn.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+    margin-top: 1px;
+}
+
+
+
+/* INDEX */
 #PlaylistCH {
-    float:left; width:100%;
+    float: left;
+    width: 100%;
 }
 
 #SongsCH1 {
@@ -125,22 +150,46 @@
 
 
 .plst-det-n {
-    float:left; width:80%;
+    float:left; width:70%;
 }
 
 .plst-det-v {
-    float:left; width:10%;
+    float: right;
+    min-width:10%;
+    height: 23px;
+    line-height: 23px;
+    background-color: #878787;
+    padding: 2px;
+    border-radius: 3px;
+    color: #f2f2f2;
+    text-align:center;
+    margin-right:5px;
 }
 
 .plst-det-l {
-    float:left; width:10%;
+    float: right;
+    min-width: 10%;
+    height: 23px;
+    line-height: 23px;
+    background-color: #878787;
+    padding: 2px;
+    border-radius: 3px;
+    color: #f2f2f2;
+    text-align: center;
 }
 
 
 
-.plst-det-header {
-    float:left; width:100%; height:30px; line-height:30px; background-color:#dedede; font-weight:bold;
+.plst-det-v .txt-cont {
+    float: left;
+    margin-top: -2px;
 }
+.plst-det-l .txt-cont {
+    float: left;
+    margin-top: -2px;
+}
+
+
 
 
 
@@ -157,9 +206,6 @@
     float:left; width:100%; height:30px; line-height:30px; background-color:#01af57; color:#FFFFFF; cursor:pointer;
 }
 
-.ttlPlaylists {
-    float:left; width:100%; height:30px; line-height:30px; background-color:#dedede; font-weight:bold;
-}
 
 .plst-ImgSong {
     float: left;
@@ -243,10 +289,6 @@
 }
 
 
-
-.plst-det-name {
-    background-color:#fcf088; width:100%; height:32px; line-height:32px; font-size:16px; font-weight:500;
-}
 
 
 /* MANAGE PLAYLIST SONGS */
@@ -400,7 +442,13 @@
 /* ------------------- */
 
 .plst-det-header {
-    background-color:#fcf088; width:100%; height:32px; line-height:32px; font-size:16px; font-weight:500;
+    background: rgb(9,93,121);
+    background: linear-gradient(180deg, rgba(9,93,121,1) 14%, rgba(4,70,92,1) 100%);
+    height: 32px;
+    line-height: 32px;
+    font-size: 17px;
+    font-weight: 600;
+    color:#FFFFFF;
 }
 
 

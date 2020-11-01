@@ -9,6 +9,7 @@ using MySql.Data.MySqlClient;
 using Playlist.Zone.Dto.Common.Tag;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,7 +37,7 @@ namespace Compiler.Datatier.Common.Tag
             {
                 string sql_qry = @" SELECT T.* FROM " + nameof(Tag) + @" AS T 
                                         ORDER BY RAND()
-                                            LIMIT 20 ";
+                                            LIMIT 100 ";
 
 
                 var schemePolicy = await db.QueryAsync<TagDto>(sql_qry);
@@ -50,6 +51,28 @@ namespace Compiler.Datatier.Common.Tag
             return retObjList;
         }
 
+
+        public async Task<List<AbstractTagDto>> GetPopularTags()
+        {
+            List<AbstractTagDto> retObjList = new List<AbstractTagDto>();
+
+            using (IDbConnection db = new MySqlConnection(_baseSettings.GetConnString()))
+            {
+                string sql_qry = @" select TR.TagId As Id, T.Name, T.Uid, T.OwnerUid, COUNT(TR.TagId) AS TagCount from tag_owner_rel AS TR
+		                                    LEFT JOIN tag AS T ON T.Id = TR.TagId
+			                                    GROUP BY TR.TagId
+				                                    ORDER BY TagCount DESC
+                                                            LIMIT 100";
+
+                var schemePolicy = await db.QueryAsync<TagDto>(sql_qry);
+
+                retObjList = schemePolicy.ToList<AbstractTagDto>();
+
+                retObjList = retObjList == null ? new List<AbstractTagDto>() : retObjList;
+            }
+
+            return retObjList;
+        }
 
 
         public async Task<AbstractTagDto> GetByName(string pName)

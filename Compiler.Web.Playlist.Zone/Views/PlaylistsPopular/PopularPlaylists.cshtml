@@ -6,17 +6,15 @@
 
 <div style="float:left; width:100%;">
     
-    <div class="plst-det-header">
-        Popular Playlists
-    </div>
+    <div class="plst-det-header">&nbsp;Popular Playlists</div>
 
     @foreach(var item in Model)
     {
-        <div class="plst-Item" data-plstid="@item.Id" data-userid="@item.UserId">
-            <div class="plst-det-n">@item.Name</div>
-            <div class="plst-det-v">V: @item.ViewNum</div>
-            <div class="plst-det-l">L: @item.LikeNum</div>
-        </div>
+    <div class="plst-Item" data-plstid="@item.Id" data-userid="@item.UserId">
+        <div class="plst-det-n">@item.Name</div>
+        <div class="plst-det-l"><div class="eyeIcn" /><div class="txt-cont">@item.LikeNum</div></div>
+        <div class="plst-det-v"><div class="viewIcn" /><div class="txt-cont">@item.ViewNum</div></div>
+    </div>
     }
 </div>
 

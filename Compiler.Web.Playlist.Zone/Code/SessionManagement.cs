@@ -25,7 +25,7 @@ namespace Compiler.Web.Playlist.Zone.Code
             if (string.IsNullOrEmpty(nameId.ToString()))
                 return 0;
 
-            Int32.TryParse(nameId.ToString(), out ret_user_id);
+            Int32.TryParse(nameId.Value.ToString(), out ret_user_id);
 
             return ret_user_id;
         }

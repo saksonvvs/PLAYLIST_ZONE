@@ -40,10 +40,10 @@ class MusicPlayer extends React.Component {
                     <div id="playerCH1" className="player-child-cont">
 
                         <div className="player-controls">
-                            <div className="plr-btn plr-btn-prev">prev</div>
-                            <div className="plr-btn plr-btn-play">pause</div>
-                            <div className="plr-btn plr-btn-next">next</div>
-                            <div className="plr-btn plr-btn-shuffle">SHFL</div>
+                            <div className="plr-btn plr-btn-prev"><img alt="Prev" src="/images/prev_icn.png"/></div>
+                            <div className="plr-btn plr-btn-play"><img alt="Prev" src="/images/pause_icn.png" /></div>
+                            <div className="plr-btn plr-btn-next"><img alt="Prev" src="/images/next_icn.png" /></div>
+                            <div className="plr-btn plr-btn-shuffle"><img alt="Prev" src="/images/shuffle_icn.png" /></div>
                         </div>
 
                         <div className="player-name"></div>
@@ -220,12 +220,14 @@ function stopVideo() {
 
 function pauseVideo() {
     if (CURR_STATUS == "PLAY") {
-        $(".plr-btn-play").html("play");
+        //$(".plr-btn-play").html("play");
+        $(".plr-btn-play").html("<img alt='Play' src='/images/play_icn.png' />");
         player.pauseVideo();
         CURR_STATUS = "PAUSE";
     }
     else {
-        $(".plr-btn-play").html("pause");
+        //$(".plr-btn-play").html("pause");
+        $(".plr-btn-play").html("<img alt='Pause' src='/images/pause_icn.png' />");
         player.playVideo();
         CURR_STATUS = "PLAY";
     }

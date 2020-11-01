@@ -13,9 +13,45 @@
     border-radius: 3px;
 }
 
+
 .plr-btn-prev {
     background-color:#3077be;
 }
+.plr-btn-prev img {
+    width:16px;
+    margin-top:-3px;
+}
+
+
+.plr-btn-play {
+    background-color: #3077be;
+}
+.plr-btn-play img {
+    width:16px;
+    margin-top:-3px;
+}
+
+
+
+.plr-btn-next {
+    background-color: #3077be;
+}
+.plr-btn-next img{
+    width:16px;
+    margin-top:-3px;
+}
+
+
+
+.plr-btn-shuffle {
+    background-color: #3077be;
+}
+.plr-btn-shuffle img{
+    width:16px;
+    margin-top:-3px;
+}
+
+
 
 
 

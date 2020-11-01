@@ -2,6 +2,8 @@
 @{
     ViewData["Title"] = "Tags";
     Layout = null;
+
+    int defId = Model.Count > 0 ? @Model[0].Id : 0;
 }
 
 
@@ -11,29 +13,17 @@
 
 
     <div class="col-md-3">
-
         @foreach (var item in Model)
         {
-            <div class="tag-m-itm" data-attr-id="@item.Id" data-attr-name="@item.Name" style="float:left; padding:3px 10px; background-color:#578096; color:#FFFFFF; border-radius:3px; margin-top:3px; margin-right:3px; cursor:pointer;">
+            <div class="tag-m-itm" data-attr-id="@item.Id" data-attr-name="@item.Name">
                 @item.Name
             </div>
         }
-
     </div>
 
 
     <div class="col-md-9 sub-content">
-
-
-        @foreach (var item in Playlist.Zone.Services.Helpers.Artist.ArtistHelper.GetPopularArtists())
-        {
-            <div class="itm-Srch-Artist" data-attr-artist="@item.Name" style="background:url('/images/singers/@item.Thumbnail') center; background-size:cover;"></div>
-            <div class="itm-Blnk"></div>
-        }
-
-
     </div>
-
 
 </div>
 
@@ -45,18 +35,23 @@
 
     $(document).ready(function () {
 
+        loadTag(@defId); 
+
         $(".tag-m-itm").on("click", function () {
-            
+            loadTag($(this).attr("data-attr-id"));
+        });
+
+
+        function loadTag(value) {
             PreloaderOn(".sub-content");
 
-            $.get('/tags/details/' + $(this).attr("data-attr-id"), function (data) {
+            $.get('/tags/details/' + value, function (data) {
 
                 window.location.hash = "tags";
                 $(".sub-content").html(data);
                 PreloaderOff();
             });
-        });
-    
+        }
     });
-    
+
 </script>

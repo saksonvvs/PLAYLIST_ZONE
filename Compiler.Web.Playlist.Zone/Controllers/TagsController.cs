@@ -34,9 +34,10 @@ namespace Compiler.Web.Playlist.Zone.Controllers
         public async Task<IActionResult> Index()
         {
             List<AbstractTagDto> tags_list;
-            tags_list = await _tagEntity.GetRandomTags();
+            tags_list = await _tagEntity.GetPopularTags();
             return View(tags_list);
         }
+
 
 
         [Route("/Tags/Details/{tag_id}")]
@@ -46,6 +47,7 @@ namespace Compiler.Web.Playlist.Zone.Controllers
             playlist_list = await _playlistEntity.GetByTagId(tag_id);
             return View(playlist_list);
         }
+
 
 
 
