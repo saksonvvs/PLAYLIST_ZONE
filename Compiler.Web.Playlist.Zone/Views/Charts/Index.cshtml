@@ -7,35 +7,28 @@
 
 
 <div class="row row-item">
-    <div class="col-md-12 main-back" style="float:left; width:98%; height:42px; line-height:42px; margin:15px 0 0 1%; border-radius:2px;">
-        <div style="float:left; color:#FFFFFF; font-size:19px;">
-            Charts
-        </div>
+    <div class="col-md-12 main-back chrt-hdr-cnt">
+        <div>Charts</div>
     </div>
 </div>
-
 
 
 <div class="row row-item" style="margin-top:20px;">
     <div class="col-md-12 artist-main-cnt">
-
         @foreach (var item in Playlist.Zone.Services.Helpers.Artist.ArtistHelper.GetPopularArtists())
         {
             <div class="itm-Srch-Artist" data-attr-artist="@item.Name" style="background:url('/images/singers/@item.Thumbnail') center; background-size:cover;"></div>
         }
-       
     </div>
 </div>
-
-
 
 
 <div class="row row-item" style="margin:0 0 0 0;">
 
 
     <div class="col-md-4">
-        <div style="float:left; width:100%;">
-            <h2 style=" float:left; width:100%; background-color:#dedede;">&nbsp;@Compiler.Common.Music.ChartType.Shazam.ToString()</h2>
+        <div class="cont-100">
+            <h2 class="chrt-main-hdr">&nbsp;@Compiler.Common.Music.ChartType.Shazam.ToString()</h2>
             <ul class="crt-det-1">
                 @foreach (var item in Model)
                 {
@@ -50,8 +43,8 @@
 
 
     <div class="col-md-4">
-        <div style="float:left; width:100%;">
-            <h2 style="float:left; width:100%; background-color:#dedede;">&nbsp;@Compiler.Common.Music.ChartType.Billboard.ToString()</h2>
+        <div class="cont-100">
+            <h2 class="chrt-main-hdr">&nbsp;@Compiler.Common.Music.ChartType.Billboard.ToString()</h2>
             <ul class="crt-det-1">
                 @foreach (var item in Model)
                 {
@@ -66,8 +59,8 @@
     
 
     <div class="col-md-4">
-        <div style="float:left; width:100%;">
-            <h2 style="float:left; width:100%; background-color:#dedede;">&nbsp;@Compiler.Common.Music.ChartType.iTunes.ToString()</h2>
+        <div class="cont-100">
+            <h2 class="chrt-main-hdr">&nbsp;@Compiler.Common.Music.ChartType.iTunes.ToString()</h2>
             <ul class="crt-det-1">
                 @foreach (var item in Model)
                 {
@@ -89,7 +82,6 @@
 <script>
 
     $(document).ready(function () {
-
         $(".chrt-hm-item").on("mouseover", function () {
             $(this).css("background-color", "#C8E3FA");
         });
@@ -97,7 +89,6 @@
         $(".chrt-hm-item").on("mouseout", function () {
             $(this).css("background-color", "#FFFFFF");
         });
-
     });
 
 
