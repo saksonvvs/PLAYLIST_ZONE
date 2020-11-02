@@ -19,7 +19,6 @@
         <input type="button" id="EditPlstCancelBtn" value="Cancel" />
         <input type="button" id="EditPlstCompBtn" value="Edit Playlist" />
     </div>
-
 </div>
 
 
@@ -30,24 +29,20 @@
         $("#EditPlaylistDlgBox").css("left", ($("#AddNewPlaylistBtn").offset().left+15) + "px");
         $("#EditPlaylistDlgBox").css("top", ($("#AddNewPlaylistBtn").offset().top+15) + "px");
 
-
         $("#EditPlstCompBtn").click(function () {
 
             var plst_name = "";
             plst_name = $("#EditPlstNameTxt").val();
 
-            $.post("/Data/Playlists/Rename", { Id: @Model.Id, playlistName: plst_name }).done( function(data) {
+            $.post("/Data/Playlists/Rename", { Id: @Model.Id, playlistName: plst_name }).done(function (data) {
                 LightBoxOff();
                 LoadMyPlaylists();
             });
-
-        })
-
+        });
 
         $("#EditPlstCancelBtn").click(function () {
             LightBoxOff();
         });
-
     });
 
 </script>

@@ -453,3 +453,48 @@
 
 
 /* ------------------- */
+
+
+
+
+
+/*------PLST-ADD-DLG-SONG------------------*/
+
+
+
+#AddNewSongDlgBox .plst-add-btnsCH1 {
+    float: left;
+    width: 100%;
+    margin: 10px 0 0 0;
+}
+
+#AddNewSongDlgBox  #AddSongCancelBtn {
+    float: right;
+}
+
+#AddNewSongDlgBox  #AddSongCompBtn {
+    float: right;
+    margin-right: 10px;
+}
+
+
+#AddNewSongDlgBox #SearchResultsCH1 {
+    float: left;
+    width: 100%;
+    overflow: auto;
+}
+
+#AddNewSongDlgBox .add-song-dlg-hrd1 {
+    float:left; width:100%; height:23px; line-height:23px; background-color:#dedede;
+}
+
+#AddNewSongDlgBox .add-song-dlg-cont1 {
+    float:left; width:100%; margin:10px 0 0 0;
+}
+
+#AddNewSongDlgBox #AddNewSongNameTxt {
+    float:left; width:100%;
+}
+
+
+/*------PLST-ADD-DLG-SONG------------------*/

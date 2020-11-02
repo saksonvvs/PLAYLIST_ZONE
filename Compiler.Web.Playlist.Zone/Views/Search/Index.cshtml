@@ -7,20 +7,15 @@
 
 <div class="row row-item" >
     <div class="col-md-12">
-
         <div style="margin:0;">
-
             @foreach (var item in Playlist.Zone.Services.Helpers.Artist.ArtistHelper.GetPopularArtists())
             {
                 <div class="itm-Srch-Artist" data-attr-artist="@item.Name" style="background:url('/images/singers/@item.Thumbnail') center; background-size:cover;"></div>
                 <div class="itm-Blnk"></div>
             }
-
         </div>
-
     </div>
 </div>
-
 
 
 <script>
@@ -33,9 +28,3 @@
         });
     });
 </script>
-
-
-
-@section Scripts
-{
-}

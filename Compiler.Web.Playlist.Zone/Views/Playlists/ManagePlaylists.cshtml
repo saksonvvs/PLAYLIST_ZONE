@@ -5,11 +5,8 @@
 
 
 <div style="float:left; width:100%;">
-    
     <div class="plst-det-header">&nbsp;Playlists</div>
-
     <div id="AddNewPlaylistBtn">+ Add New playlist</div>
-
 
     @foreach (var item in Model)
     {
@@ -28,7 +25,6 @@
 
 
     $(document).ready(function () {
-        
         $(".plst-Item").off("mouseover", "**");
         $(".plst-Item").off("mouseout", "**");
         $(".plst-Item").off("click", "**");
@@ -39,17 +35,11 @@
                 return;
 
             $(this).css("background-color", "#dedede");
-            //$(this).children(".plst-DelPlst").css("background-color", "#cdcdcd");
         });
 
 
         $(".plst-Item").on("mouseout", function () {
             $(this).css("background-color", "");
-
-            /*$(this).children(".plst-DelPlst").each(function () {
-                if ($(this).hasClass("selected") != "plstSelected")
-                    $(this).css("background-color", "#dedede")
-            });*/
         });
 
 
@@ -68,7 +58,6 @@
             $.get("/Playlists/Rename/" + $(this).parent().attr("data-plstid"), function (data) {
                 LightBoxContent(data);
             });
-
         });
 
         $("#AddNewPlaylistBtn").click(function () {

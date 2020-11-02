@@ -20,11 +20,9 @@
     
 
     <div class="col-md-5 msc-song-MCH" style="padding:6px 6px 6px 3px;">
-        
         <div class="songCH">
             <div id="SongsCH1"></div>
         </div>
-
     </div>
 </div>
 
@@ -107,14 +105,12 @@
             if ($(window).width() < 1000) {
                 $("#SearchResultsCh").scrollTop( $("#SongsCH1").position().top);
             }
-            
         });
     }
     
 
 
     function LoadPopularPlaylists() {
-
         PreloaderOn("#PlaylistCH");
         $.get("/Playlists/PopularPlaylists", function (data) {
             $("#SongsCH1").html("");

@@ -4,14 +4,14 @@
 }
 
 
-    <div style="float:left; width:100%;">
+    <div class="cont-100">
         <div class="plst-det-header">&nbsp;@Model.Name</div>
         <div id="PlayPlaylistBtn" data-attr-plst="@ViewBag.PlaylistId"> &gt; Play Playlist</div>
         <div id="AddNewSongBtn" data-attr-plst="@ViewBag.PlaylistId">+ Add New Song</div>
         <div id="MakeDefaultBtn" data-attr-plst="@ViewBag.PlaylistId">- Make Default</div>
 
 
-        <div style="float:left; width:100%;">
+        <div class="cont-100">
             @foreach (var item in Model.SongsList)
             {
                 <div class="plst-SongItem" data-songid="@item.Id" data-song-guid="@item.YouTubeId">
@@ -25,7 +25,7 @@
         </div>
 
 
-        <div style="float:left; width:100%; margin-top:3px;">
+        <div class="cont-100">
 
             <div class="tags-ch">
                 @foreach (var item in Model.TagsList)
@@ -53,7 +53,6 @@
 
     $(document).ready(function () {
 
-
         $(".plst-SongItem").on("mouseover", function () {
             $(this).css("background-color", "#dedede");
             $(this).children(".plst-DelSong").css("background-color", "#CC0000");
@@ -63,7 +62,6 @@
             $(this).css("background-color", "");
             $(this).children(".plst-DelSong").css("background-color", "#d87171");
         });
-
 
         $(".plst-ImgSong").on("click", function () {
             PlayerNavigatePlaySong($(this).parent().attr("data-song-guid"));
