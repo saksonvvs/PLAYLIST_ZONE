@@ -1,0 +1,14 @@
+﻿
+
+.tag-detail-ch {
+    float:left; width:100%; margin:0 0 0 0;
+}
+
+
+@media(max-width:1000px) {
+
+    .tag-detail-ch {
+        margin: 20px 0 0 0;
+    }
+
+}

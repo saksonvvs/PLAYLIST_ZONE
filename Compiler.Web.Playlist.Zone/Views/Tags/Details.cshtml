@@ -7,14 +7,16 @@
 
 
 
-<div style="float:left; width:100%; margin:0 0 0 0;">
+<div class="tag-detail-ch">
 
     @foreach (var item in Model)
     {
-        <div class="plst-Item" data-plstid="@item.Id" data-userid="@item.UserId" style="height:50px; line-height:50px; background-color:#EFEFEF; margin-bottom:2px;">
-            <div style="float:left; width:20%; height:100%">@item.Name</div>
-            <div class="plst-Icons" style="float:left; width:80%; height:100%; overflow:hidden;"></div>
+    <div class="plst-Item" data-plstid="@item.Id" data-userid="@item.UserId" style="height:50px; line-height:50px; background-color:#EFEFEF; margin-bottom:2px;">
+        <div style="float:left; width:20%; height:100%; overflow:hidden;">@item.Name</div>
+        <div style="float:left; width:80%; height:100%; overflow:hidden;">
+            <div class="plst-Icons" style="float:left; width:120%; height:100%;"></div>
         </div>
+    </div>
     }
 
 </div>

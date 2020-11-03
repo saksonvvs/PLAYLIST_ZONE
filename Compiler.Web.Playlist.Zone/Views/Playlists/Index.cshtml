@@ -42,10 +42,10 @@
     $(document).ready(function () {
 
         $("#PlaylistCH").css("height", ($(window).height() - 120) + "px");
-        $("#PlaylistCH").css("overflow", "auto");
+        $("#PlaylistCH").css("overflow", "hidden");
 
         $("#SongsCH1").css("height", ($(window).height() - 120) + "px");
-        $("#SongsCH1").css("overflow", "auto");
+        $("#SongsCH1").css("overflow", "hidden");
         
 
         @if(User.Identity.IsAuthenticated)
@@ -56,6 +56,14 @@
         {
             <text>LoadPopularPlaylists();</text>
         }
+
+        $("#PlaylistCH").on("mouseover", function () {
+            $("#PlaylistCH").css("overflow", "auto");
+        });
+
+        $("#PlaylistCH").on("mouseout", function () {
+            $("#PlaylistCH").css("overflow", "hidden");
+        });
         
 
         $("#SongsCH1").on("mouseover", function () {
