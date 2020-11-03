@@ -50,6 +50,16 @@ namespace Compiler.Web.Playlist.Zone.Controllers
 
 
 
+        [Route("/Tags/Details/Label/{tag_name}")]
+        public async Task<IActionResult> LabelDetails(string tag_name)
+        {
+            List<AbstractTagDto> tags_list = new List<AbstractTagDto>();
+            tags_list.Add(await _tagEntity.GetByName(tag_name));
+            return View("Index", tags_list);
+        }
+
+
+
 
         [HttpGet]
         [Route("/Tags/Add/{playlist_id}")]

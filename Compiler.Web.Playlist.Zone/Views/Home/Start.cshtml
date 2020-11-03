@@ -58,25 +58,25 @@
     <div class="row row-item" style="margin:15px 0 0 0; line-height:30px;">
         <div class="col-md-4">
             <ul>
-                <li class="plst-hm-item"><a href="/#tags">Country Playlists</a></li>
-                <li class="plst-hm-item"><a href="/#tags">Hip Hop Playlists</a></li>
-                <li class="plst-hm-item"><a href="/#tags">Pop Playlists</a></li>
+                <li class="plst-hm-item" data-attr-uid="countrymusic">Country Playlists</li>
+                <li class="plst-hm-item" data-attr-uid="hiphop">Hip Hop Playlists</li>
+                <li class="plst-hm-item" data-attr-uid="pop">Pop Playlists</li>
             </ul>
         </div>
 
         <div class="col-md-4">
             <ul>
-                <li class="plst-hm-item"><a href="/#tags">Trending Now</a></li>
-                <li class="plst-hm-item"><a href="/#tags">New Releases</a></li>
-                <li class="plst-hm-item"><a href="/#tags">Seasonal</a></li>
+                <li class="plst-hm-item" data-attr-uid="trending">Trending Now</li>
+                <li class="plst-hm-item" data-attr-uid="new">New Releases</li>
+                <li class="plst-hm-item" data-attr-uid="seasonal">Seasonal</li>
             </ul>
         </div>
 
         <div class="col-md-4">
             <ul>
-                <li class="plst-hm-item"><a href="/#tags">Top 20 Pop Songs</a></li>
-                <li class="plst-hm-item"><a href="/#tags">Top 30 Rock</a></li>
-                <li class="plst-hm-item"><a href="/#tags">Top 40 Dance</a></li>
+                <li class="plst-hm-item" data-attr-uid="topchart">Top 20 Pop Songs</li>
+                <li class="plst-hm-item" data-attr-uid="classicrock">Top Classic Rock</li>
+                <li class="plst-hm-item" data-attr-uid="topchart">Top 40 Dance</li>
             </ul>
         </div>
     </div>
@@ -114,11 +114,13 @@
 
         $(".plst-hm-item").on("click", function () {
             PreloaderOn(".main-content");
-            $.get("/Tags/Index", function (data) {
+
+            $.get("/tags/details/label/" + $(this).attr("data-attr-uid"), function (data) {
                 $(".main-content").html(data);
                 PreloaderOff();
             });
         });
+
 
 
         $(".plst-hm-item").on("mouseover", function () {
@@ -128,6 +130,8 @@
         $(".plst-hm-item").on("mouseout", function () {
             $(this).css("background-color", "#FFFFFF");
         });
+
+
 
     });
 </script>
