@@ -14,7 +14,7 @@ function InitSearchBar(controlName)
 StartSearch = function (keyVal) {
     PreloaderOn(".main-content");
 
-    $.get("/Search/Keyword/" + keyVal, function (data) {
+    $.get("/Search/Keyword/" + encodeURIComponent(keyVal), function (data) {
         $(".main-content").html(data);
 });
 }

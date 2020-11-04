@@ -43,7 +43,7 @@
             song_name = $("#AddNewSongNameTxt").val();
 
             
-            $.post("/Data/Playlists/SearchSong/" + song_name, function (data) {
+            $.post("/Data/Playlists/SearchSong/" + encodeURIComponent(song_name), function (data) {
 
                 $("#ssSongItm").off();
                 $("#SearchResultsCH1").empty();
@@ -60,7 +60,7 @@
 
 
                 $(".ssSongItm").on("click", function () {
-                    $.post("/Data/Playlists/AddSong/@Model/" + $(this).attr("data-songid"), function (data) {
+                    $.post("/Data/Playlists/AddSong/@Model/" + encodeURIComponent($(this).attr("data-songid")), function (data) {
                         LoadPlaylistDetails(data.playlistId);
                         LightBoxOff();
                     });

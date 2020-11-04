@@ -17,7 +17,7 @@
     LoadChart = function (chart_uid) {
         window.location = "/#charts/details/" + chart_uid;
         PreloaderOn("#SearchResultsCh");
-        $.get("/charts/details/" + chart_uid, function (data) {
+        $.get("/charts/details/" + encodeURIComponent(chart_uid), function (data) {
             $("#SearchResultsCh").html(data);
         });
     }

@@ -43,7 +43,7 @@
         
         $("#PlayPlaylistBtn").on("click", function () {
             OpenPlayer();
-            $.get("/player/playlist/" + $(this).attr("data-attr-plst"), function (data) {
+            $.get("/player/playlist/" + encodeURIComponent($(this).attr("data-attr-plst")), function (data) {
                 $(".player-content").html(data);
             });
         });

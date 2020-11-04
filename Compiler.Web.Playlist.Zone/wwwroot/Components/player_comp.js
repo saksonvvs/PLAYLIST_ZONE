@@ -250,7 +250,7 @@ function playSong(song_id, song_guid) {
 function PlayerNavigatePlaySong(song_id) {
     OpenPlayer();
 
-    $.get("/player/song/" + song_id, function (data) {
+    $.get("/player/song/" + encodeURIComponent(song_id), function (data) {
         $(".player-content").html(data);
     });
 }
@@ -398,7 +398,7 @@ function AddSongToPlaylist(current_song_id) {
 
     LightBoxOn();
 
-    $.get("/Playlists/AddSongToPlaylist/" + current_song_id, function (data) {
+    $.get("/Playlists/AddSongToPlaylist/" + encodeURIComponent(current_song_id), function (data) {
         LightBoxContent(data);
     })
     .done(function () {

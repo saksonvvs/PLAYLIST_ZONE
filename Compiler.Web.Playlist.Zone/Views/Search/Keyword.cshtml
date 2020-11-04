@@ -90,7 +90,7 @@
 
             OpenPlayer();
 
-            $.get("/Player/Song/" + $(this).attr("data-attr-id"), function (data) {
+            $.get("/Player/Song/" + encodeURIComponent($(this).attr("data-attr-id")), function (data) {
                 $(".player-content").html(data);
             });
         });
@@ -103,7 +103,7 @@
 
             var keyVal = $("#SearchBarTxt").val();
 
-            $.get("/Search/Keyword/@Model.NextPageToken/" + keyVal, function (data) {
+            $.get("/Search/Keyword/@Model.NextPageToken/" + encodeURIComponent(keyVal), function (data) {
                 $("#SearchResultsCh").html(data);
             });
         });
@@ -114,7 +114,7 @@
 
             PreloaderOn(".sub-content");
 
-            $.get("/Search/Keyword/" + $(this).attr("data-attr-name"), function (data) {
+            $.get("/Search/Keyword/" + encodeURIComponent($(this).attr("data-attr-name")), function (data) {
                 $("#SearchResultsCh").html(data);
             });
         });

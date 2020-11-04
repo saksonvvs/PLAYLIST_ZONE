@@ -109,7 +109,7 @@
         current_plst_id = plst_id;
         
         PreloaderOn("#SongsCH1");
-        $.get("/Playlists/ManagePlaylistSongs/" + plst_id, function (playlistData) {
+        $.get("/Playlists/ManagePlaylistSongs/" + encodeURIComponent(plst_id), function (playlistData) {
             
             $("#SongsCH1").html("");
             $("#SongsCH1").html(playlistData);

@@ -106,7 +106,7 @@
 
     PlayChart = function (chart_uid) {
         OpenPlayer();
-        $.get("/player/chart/" + chart_uid, function (data) {
+        $.get("/player/chart/" + encodeURIComponent(chart_uid), function (data) {
             $(".player-content").html(data);
         });
     }

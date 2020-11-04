@@ -73,7 +73,7 @@
             var user_id = $(sender).attr("data-userid");
 
             PreloaderOn("#SongsCH1");
-            $.get("/Playlists/LoadPlaylistDetails/" + plst_id + "/" + user_id, function (playlistData) {
+            $.get("/Playlists/LoadPlaylistDetails/" + encodeURIComponent(plst_id) + "/" + encodeURIComponent(user_id), function (playlistData) {
                 $("#SongsCH1").html("");
                 $("#SongsCH1").html(playlistData);
             });

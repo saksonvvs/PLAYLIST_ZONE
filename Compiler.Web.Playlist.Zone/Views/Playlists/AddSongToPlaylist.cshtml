@@ -46,7 +46,7 @@
         $("#AddSongSubmitBtn").off();
         $("#AddSongSubmitBtn").on("click", function () {
             
-            $.post("/Data/Playlists/AddSong/" + $("#playlist_id").val() + "/@ViewBag.SongGuid", function (data) {
+            $.post("/Data/Playlists/AddSong/" + encodeURIComponent($("#playlist_id").val()) + "/@ViewBag.SongGuid", function (data) {
 
                 $(".addSongBtn[data-attr-id='@ViewBag.SongGuid']").css("background-color", "#CC0000");
                 $(".addSongBtn[data-attr-id='@ViewBag.SongGuid']").text("Added");

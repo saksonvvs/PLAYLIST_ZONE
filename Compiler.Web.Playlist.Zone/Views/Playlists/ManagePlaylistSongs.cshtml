@@ -78,7 +78,7 @@
                 var itemObj = this;
                 var currSongId = $(this).parent().attr("data-songid");
 
-                $.get("/Data/Playlists/DeleteSong/@ViewBag.PlaylistId/" + currSongId, function () {
+                $.get("/Data/Playlists/DeleteSong/@ViewBag.PlaylistId/" + encodeURIComponent(currSongId), function () {
                     $(itemObj).parent().css("display", "none");
                 });
             }
@@ -89,7 +89,7 @@
         $("#AddNewSongBtn").on("click", function () {
             LightBoxOn();
 
-            $.get("/Playlists/AddSong/" + current_plst_id, function (data) {
+            $.get("/Playlists/AddSong/" + encodeURIComponent(current_plst_id), function (data) {
                 LightBoxContent(data);
             });
         });
@@ -98,14 +98,14 @@
 
             OpenPlayer();
 
-            $.get("/player/playlist/" + $(this).attr("data-attr-plst"), function (data) {
+            $.get("/player/playlist/" + encodeURIComponent($(this).attr("data-attr-plst")), function (data) {
                 $(".player-content").html(data);
             });
         });
 
         $("#MakeDefaultBtn").on("click", function () {
 
-            $.get("/Data/Playlists/MakeDefault/" + $(this).attr("data-attr-plst"), function (data) {
+            $.get("/Data/Playlists/MakeDefault/" + encodeURIComponent($(this).attr("data-attr-plst")), function (data) {
                 LoadMyPlaylists();
             });
 

@@ -55,7 +55,7 @@
         $(".plst-EditPlst").on("click", function () {
             LightBoxOn();
 
-            $.get("/Playlists/Rename/" + $(this).parent().attr("data-plstid"), function (data) {
+            $.get("/Playlists/Rename/" + encodeURIComponent($(this).parent().attr("data-plstid")), function (data) {
                 LightBoxContent(data);
             });
         });

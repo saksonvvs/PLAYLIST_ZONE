@@ -34,7 +34,7 @@
             var plst_name = "";
             plst_name = $("#AddNewPlstNameTxt").val();
 
-            $.post("/Data/Playlists/Add/" + plst_name, function (data) {
+            $.post("/Data/Playlists/Add/" + encodeURIComponent(plst_name), function (data) {
                 LightBoxOff();
                 LoadMyPlaylists();
             });

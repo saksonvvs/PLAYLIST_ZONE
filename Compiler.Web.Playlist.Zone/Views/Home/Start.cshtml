@@ -115,7 +115,7 @@
         $(".plst-hm-item").on("click", function () {
             PreloaderOn(".main-content");
 
-            $.get("/tags/details/label/" + $(this).attr("data-attr-uid"), function (data) {
+            $.get("/tags/details/label/" + encodeURIComponent($(this).attr("data-attr-uid")), function (data) {
                 $(".main-content").html(data);
                 PreloaderOff();
             });
@@ -132,6 +132,16 @@
         });
 
 
+
+        $(".slideshow-slide").on("click", function () {
+            PreloaderOn(".main-content");
+            $.get('/Charts/Index', function (data) {
+
+                window.location.hash = "charts";
+                $(".main-content").html(data);
+                PreloaderOff();
+            });
+        });
 
     });
 </script>
