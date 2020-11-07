@@ -11,22 +11,16 @@ using Playlist.Zone.Administration.Models;
 
 namespace Playlist.Zone.Administration.Controllers
 {
-    //[NoCacheAttribute]
     [Authorize(Roles="Admin")]
     public class BaseController : Controller
     {
 
         
-
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
         
-
-
-
-
 
         protected void AddErrors(IdentityResult result)
         {
@@ -51,15 +45,11 @@ namespace Playlist.Zone.Administration.Controllers
         }
 
 
-
-
         protected string JsonResultEx(object pObject)
         {
             Response.ContentType = "application/json";
             return JsonConvert.SerializeObject(pObject);
         }
-
-
 
 
     }

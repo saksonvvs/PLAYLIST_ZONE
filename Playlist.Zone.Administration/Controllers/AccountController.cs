@@ -24,11 +24,8 @@ namespace Compiler.Web.Admin.Controllers
     public class AccountController : Playlist.Zone.Administration.Controllers.BaseController
     {
         private readonly ILogger _logger;
-
         public readonly IUserEntity _userManager;
-
         private readonly IConfiguration _config;
-
 
         public AccountController(
            ILogger<AccountController> pLogger,
@@ -62,10 +59,6 @@ namespace Compiler.Web.Admin.Controllers
         public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
         {
 
-            //------------------------------------------------------------------------------
-            //if ( model.Email == ConfigManagement.GetConfig()["AdminEmail"] &&
-            //model.Password == ConfigManagement.GetConfig()["AdminPassword"] )
-
             if ( model.Email == _config.GetSection("Admin").GetSection("Username").Value &&
                  model.Password == _config.GetSection("Admin").GetSection("Password").Value)
             {
@@ -74,39 +67,24 @@ namespace Compiler.Web.Admin.Controllers
                 userIdentity.AddClaim(new Claim(ClaimTypes.Name, "Admin"));
                 userIdentity.AddClaim(new Claim(ClaimTypes.NameIdentifier, "1"));
                 userIdentity.AddClaim(new Claim(ClaimTypes.Country, ""));
-                //userIdentity.AddClaim(new Claim(ClaimTypes.Email, ConfigManagement.GetConfig()["AdminEmail"]));
                 userIdentity.AddClaim(new Claim(ClaimTypes.Email, model.Email));
                 userIdentity.AddClaim(new Claim(ClaimTypes.Spn, ""));
                 userIdentity.AddClaim(new Claim(ClaimTypes.Role, "Admin"));
                 
                 ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
 
-
-                
                 await HttpContext.SignInAsync(principal);
             }
             else
             {
-                //ModelState.IsValid = false;
                 ModelState.AddModelError("Unable to login", "Wrong username/password. Please try again.");
-
                 return View();
             }
-            //------------------------------------------------------------------------------
-
-
-            
 
             return RedirectPermanent("/");
         }
 
 
-
-        
-        
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
         public async Task<IActionResult> Signout()
         {
             await HttpContext.SignOutAsync();
@@ -125,8 +103,6 @@ namespace Compiler.Web.Admin.Controllers
 
         [TempData]
         public string ErrorMessage { get; set; }
-
-
 
 
     }

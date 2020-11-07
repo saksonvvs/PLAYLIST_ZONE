@@ -3,11 +3,7 @@
     ViewData["Title"] = "Charts";
 }
 
-
-
-
 <div class="row row-item">
-
 
     <div class="col-md-3">
         <h2>@Compiler.Common.Music.ChartType.Shazam.ToString()</h2>
@@ -22,6 +18,7 @@
         </ul>
         <a href="/Music/Generate/@((int)Compiler.Common.Music.ChartType.Shazam)" style="background-color:#439b58; color:#FFFFFF; padding:4px;">Generate Chart</a>
     </div>
+
     <div class="col-md-3">
         <h2>@Compiler.Common.Music.ChartType.Billboard.ToString()</h2>
         <ul>
@@ -35,6 +32,7 @@
         </ul>
         <a href="/Music/Generate/@((int)Compiler.Common.Music.ChartType.Billboard)" style="background-color:#439b58; color:#FFFFFF; padding:4px;">Generate Chart</a>
     </div>
+
     <div class="col-md-3">
         <h2>@Compiler.Common.Music.ChartType.iTunes.ToString()</h2>
         <ul>
@@ -48,6 +46,7 @@
         </ul>
         <a href="/Music/Generate/@((int)Compiler.Common.Music.ChartType.iTunes)" style="background-color:#439b58; color:#FFFFFF; padding:4px;">Generate Chart</a>
     </div>
+
     <div class="col-md-3">
         <h2>@Compiler.Common.Music.ChartType.YouTube.ToString()</h2>
         <ul>
@@ -68,13 +67,10 @@
 <div class="row" style="margin-top:40px;">
 
     <div class="loc-md-6">
-
         <input type="button" id="LoadChartContentBtn" value="Load iTunes Content" />
-
     </div>
 
     <div class="loc-md-6">
-
     </div>
 
 </div>
@@ -84,22 +80,13 @@
 @section Scripts
 {
 
-
     <script>
-
-             $(document).ready(function () {
-
-                 $("#LoadChartContentBtn").on("click", function () {
-
-                     $.get("https://www.apple.com/itunes/charts/songs/", function (data) {
-                         alert(data);
-                     });
-
-                 });
-
-             });
-
+        $(document).ready(function () {
+            $("#LoadChartContentBtn").on("click", function () {
+                $.get("https://www.apple.com/itunes/charts/songs/", function (data) {
+                    console.log(data);
+                });
+            });
+        });
     </script>
-
-
 }
